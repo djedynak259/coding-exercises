@@ -44,3 +44,7 @@ function longestConsec(strarr, k) {
     })
     return longest;
 }
+
+// String with name
+
+greet = name => name ? `hello ${name}!` : null
