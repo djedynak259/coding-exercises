@@ -26,3 +26,21 @@ const factorial = n => {
 // Or
 
 const factorial = n => n>0 ? n*factorial(n-1) : 1;
+
+// Find longest String in array of Strings
+
+function longestConsec(strarr, k) {
+    var longest = '';
+    if(strarr.length === 0){
+      return ''
+    }
+    strarr.reduce(function(curr, i){
+      if(i.length > curr.length){
+        longest = i;
+        return longest
+      } else {
+        return curr
+      }
+    })
+    return longest;
+}
