@@ -48,3 +48,9 @@ function longestConsec(strarr, k) {
 // String with name
 
 greet = name => name ? `hello ${name}!` : null
+
+// IP Address changed to binary String
+
+function ipToInt32(ip){
+  return ip.toString().split('.').map(e => ('00000000'+ parseInt(e).toString(2)).slice(-8)).join('');
+}
