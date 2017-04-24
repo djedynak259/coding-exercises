@@ -63,5 +63,35 @@ ipToInt32 = ip => ip.split(".").map((x, i, a) => x * Math.pow(256, a.length - i 
 
 ipToInt32 = ip => ip.split(".").reduce(function(int,v){ return int*256 + +v })
 
+// Matching codes based on index of string
 
+function SubstitutionCipher(abc1, abc2) {
+  this.encode = function (str) {
+    console.log(abc1, abc2, str, 'encode')
+    var split = str.split('')
+    var newArr = []
+    for (val of split) {
+      if (abc1.indexOf(val)===-1){
+        newArr.push(val)
+      } else {
+        newArr.push(abc2.charAt(abc1.indexOf(val)))
+      }
+    }
+    return newArr.join('') 
+  }
+  
+  this.decode = function (str) {
+    console.log(abc1, abc2, str, 'decode')
+    var split = str.split('')
+    var newArr = []
+    for (val of split) {
+      if (abc2.indexOf(val)===-1){
+        newArr.push(val)
+      } else {
+        newArr.push(abc1.charAt(abc2.indexOf(val)))
+      }
+    }
+    return newArr.join('')
+  }
+}
 
