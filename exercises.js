@@ -54,3 +54,14 @@ greet = name => name ? `hello ${name}!` : null
 function ipToInt32(ip){
   return ip.toString().split('.').map(e => ('00000000'+ parseInt(e).toString(2)).slice(-8)).join('');
 }
+
+// IP Address to 32 bit number
+
+ipToInt32 = ip => ip.split(".").map((x, i, a) => x * Math.pow(256, a.length - i - 1)).reduce((a,b) => a + b)
+
+// OR
+
+ipToInt32 = ip => ip.split(".").reduce(function(int,v){ return int*256 + +v })
+
+
+
