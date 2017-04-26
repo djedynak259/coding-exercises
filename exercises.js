@@ -155,7 +155,36 @@ function uncompress(music) {
   return result;
 }
 
-// rectangle Pair - one line
+// rectangle Pair  to find largest area - one line of code
 
 rectanglePair=p=>[p/=4,p]
+
+// Two teams matching up players so team 1 can score maximum points - Codewars Kata 6 - Simple Fun #210
+
+function maximizePoints(team1, team2) {
+  var sort1 = team1.sort((a,b)=>b-a);
+  var sort2 = team2.sort((a,b)=>b-a);
+  var count = 0;
+  sort1.forEach(function(e){
+    for (i=0;i<sort2.length;) {
+      if(e > sort2[i]){
+        count++;
+        sort2.shift();
+        break;
+      } else {
+        sort2.shift();
+      }
+    }
+  })
+  return count;
+}
+
+  // look at how this is two loops in one, WOW! 
+
+function maximizePoints(team1, team2) {
+   var t1=team1.sort((a,b)=>a-b);
+   var t2=team2.sort((a,b)=>a-b);
+   for (var c=0,j=0,i=0;i<t1.length;i++,j++) if (t1[i]>t2[j]) c++; else j--; 
+   return c
+}  
 
