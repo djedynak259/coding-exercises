@@ -154,3 +154,8 @@ function uncompress(music) {
   }
   return result;
 }
+
+// rectangle Pair - one line
+
+rectanglePair=p=>[p/=4,p]
+
