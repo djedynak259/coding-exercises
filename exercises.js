@@ -181,10 +181,30 @@ function maximizePoints(team1, team2) {
 
   // look at how this is two loops in one, WOW! 
 
-function maximizePoints(team1, team2) {
-   var t1=team1.sort((a,b)=>a-b);
-   var t2=team2.sort((a,b)=>a-b);
-   for (var c=0,j=0,i=0;i<t1.length;i++,j++) if (t1[i]>t2[j]) c++; else j--; 
-   return c
-}  
+  function maximizePoints(team1, team2) {
+     var t1=team1.sort((a,b)=>a-b);
+     var t2=team2.sort((a,b)=>a-b);
+     for (var c=0,j=0,i=0;i<t1.length;i++,j++) if (t1[i]>t2[j]) c++; else j--; 
+     return c
+  }  
+
+  // Rewritten to test
+
+  function maximizePoints(team1, team2) {
+     var t1=team1.sort((a,b)=>b-a);
+     var t2=team2.sort((a,b)=>b-a);
+     console.log(t1)
+     console.log(t2)
+     for (var c=0,j=0,i=0;j<t1.length;i++,j++) {
+       console.log('top', t1[i],t2[j]); 
+       if (t1[i]>t2[j]) {
+         c++; 
+         console.log('if')
+        } else { 
+        i-- ;
+        console.log('else');
+       }  
+      }
+     return c
+  }
 
