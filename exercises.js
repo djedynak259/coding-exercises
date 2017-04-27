@@ -257,3 +257,35 @@ function parseHTMLColor(color) {
     } : '';
 }
 
+  // Color parser other options
+
+  function parseHTMLColor(color) {
+    if (color[0] === "#") {
+      const [r, g, b] = color.length === 4
+        ? [color[1] + color[1], color[2] + color[2], color[3] + color[3]]
+        : [color.slice(1, 3), color.slice(3, 5), color.slice(5, 7)]
+      return {
+        r: parseInt(r, 16),
+        g: parseInt(g, 16),
+        b: parseInt(b, 16),
+      }
+    } else {
+      return parseHTMLColor(PRESET_COLORS[color.toLowerCase()])
+    }
+  }
+
+  // Color parser other option
+  
+  function parseHTMLColor(c) {
+    if (!c.match("#")) c = PRESET_COLORS[c.toLowerCase()];
+
+    c = c.replace('#', '');
+    
+    if (c.length < 6) c = c.replace(/(.)/g, "$1$1");
+
+    return {
+      r: parseInt(c.substring(0, 2), 16),
+      g: parseInt(c.substring(2, 4), 16),
+      b: parseInt(c.substring(4, 6), 16)
+    };
+  }  
