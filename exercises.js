@@ -208,3 +208,20 @@ function maximizePoints(team1, team2) {
      return c
   }
 
+// Even out wealth population) in an array
+
+function socialistDistribution(population, minimum){
+  population.forEach((e,i)=>{
+    while (e < minimum) {
+      var largest = population.indexOf(population.reduce((cur, acc)=> cur > acc ? cur : acc))
+      population[i] +=1;
+      e +=1;
+      population[largest] -=1;
+    }
+  })
+  
+  let isBigEnough = e=> e >= minimum;  
+  
+  return population.every(isBigEnough) ? population : [];
+}
+
