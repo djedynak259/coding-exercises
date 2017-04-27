@@ -239,3 +239,21 @@ function socialistDistribution(population, minimum){
   return Math.min(...population) < minimum ? [] : population;
 }
 
+// Color Parser
+
+function parseHTMLColor(color) {
+    if (color[0] != '#') {
+      color = PRESET_COLORS[color.toLowerCase()]
+    }
+    var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+    color = color.replace(shorthandRegex, function(m, r, g, b) {
+        return r + r + g + g + b + b;
+    });
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(color);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : '';
+}
+
