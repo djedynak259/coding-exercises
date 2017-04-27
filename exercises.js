@@ -225,3 +225,17 @@ function socialistDistribution(population, minimum){
   return population.every(isBigEnough) ? population : [];
 }
 
+  // Or using Rest Operator
+
+function socialistDistribution(population, minimum){
+  while (Math.min(...population) < minimum && Math.max(...population) > minimum){
+    var min = Math.min(...population),
+      minInd = population.indexOf(min),
+      max = Math.max(...population),
+      maxInd = population.indexOf(max);
+      population[minInd]++;
+      population[maxInd]--;
+  }
+  return Math.min(...population) < minimum ? [] : population;
+}
+
