@@ -208,7 +208,7 @@ function maximizePoints(team1, team2) {
      return c
   }
 
-// Even out wealth population) in an array
+// Even out wealth (population) in an array
 
 function socialistDistribution(population, minimum){
   population.forEach((e,i)=>{
@@ -275,7 +275,7 @@ function parseHTMLColor(color) {
   }
 
   // Color parser other option
-  
+
   function parseHTMLColor(c) {
     if (!c.match("#")) c = PRESET_COLORS[c.toLowerCase()];
 
@@ -289,3 +289,25 @@ function parseHTMLColor(color) {
       b: parseInt(c.substring(4, 6), 16)
     };
   }  
+
+// Word Replace, swap word sizes and correct case
+
+function replaceWords(sentence) {
+  sentence = sentence.split(' ');
+  let arr = [...sentence];
+  while (arr.length > 1) {
+    let largest = arr.reduce((a,b)=> a.length > b.length ? a : b);
+    let smallest = arr.reduce((a,b)=> a.length < b.length ? a : b);
+    let largestI = sentence.indexOf(largest);
+    let smallestI = sentence.indexOf(smallest);
+    let largestIarr = arr.indexOf(largest);
+    let smallestIarr = arr.indexOf(smallest);       
+    sentence[largestI] = smallest;
+    sentence[smallestI] = largest;
+    arr.splice(smallestIarr, 1)
+    smallestIarr > largestIarr ? arr.splice(largestIarr, 1) : arr.splice(largestIarr-1, 1)
+  }
+  let lowerCase = sentence.map(e=>e == 'I' ? e : e.toLowerCase())
+  return lowerCase.join(' ').charAt(0).toUpperCase() + lowerCase.join(' ').slice(1)
+}
+
