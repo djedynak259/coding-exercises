@@ -1,3 +1,5 @@
+// CODEWARS KATAS - completed by yours truely
+
 // List names from object to String
 
 function list(names){
