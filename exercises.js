@@ -311,3 +311,25 @@ function replaceWords(sentence) {
   return lowerCase.join(' ').charAt(0).toUpperCase() + lowerCase.join(' ').slice(1)
 }
 
+// Pac Man Kata5 #155
+
+function pacMan(N, PM, enemies) {
+  let widthNum = enemies.map(e=>e[1]);
+  let heightNum = enemies.map(e=>e[0]);
+
+  widthNum.push(N);
+  widthNum.unshift(-1);
+  heightNum.push(N);
+  heightNum.unshift(-1);
+  
+  let widthLow =  Math.max(...widthNum.filter(e=>e<PM[1]));
+  let widthHigh = Math.min(...widthNum.filter(e=>e>PM[1]));
+  let heightLow = Math.max(...heightNum.filter(e=>e<PM[0]));
+  let heightHigh = Math.min(...heightNum.filter(e=>e>PM[0])); 
+   
+  let w = widthHigh - widthLow - 1;
+  let h = heightHigh - heightLow - 1;
+  
+  return enemies.length > 0 ? w*h-1 : N*N-1
+}
+
