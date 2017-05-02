@@ -335,3 +335,4 @@ function pacMan(N, PM, enemies) {
   return enemies.length > 0 ? w*h-1 : N*N-1
 }
 
+
