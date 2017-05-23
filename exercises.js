@@ -335,4 +335,19 @@ function pacMan(N, PM, enemies) {
   return enemies.length > 0 ? w*h-1 : N*N-1
 }
 
+// Find multiples of 3 and 5 in number and add them together
+
+function findSum(n) {
+  var sum=0;
+  for(i=0; i <= Math.floor(n/3); i++){
+    sum += i * 3;
+  }
+  for(i=0; i <= Math.floor(n/5); i++){
+    sum += i * 5;
+  }
+  for(i=0; i <= Math.floor(n/15); i++){
+    sum -= i * 15;
+  }  
+  return sum
+}
 
