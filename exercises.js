@@ -407,3 +407,15 @@ var  FirstReverse = (str) => str.split('').reverse().join('')
   return join 
 }
 
+// Longest Word in String
+
+function LongestWord(sen) { 
+    sen = sen.replace(/[^\w\s]/g, "");
+    var split = sen.split(' ');
+    var largest = split.reduce((a,b) => {
+      if (b.length > a.length) return b
+      else return a
+    });
+  return largest;      
+}
+
