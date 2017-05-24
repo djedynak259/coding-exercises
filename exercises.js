@@ -361,4 +361,28 @@ function findSum(n) {
     return result
   }
 
+// increasing or decreasing or same arrays
 
+function sequenceClassifier(arr){
+  var up=0, down=0, same=0;
+  arr.reduce((a,b)=>{
+    if(b === a) {
+      same ++;
+      return b
+    }
+    if(b > a) {
+      up ++;
+      return b
+    }
+    if(b < a) {
+      down ++;
+      return b
+    }
+  })
+  if (up === 0 && same === 0 && down > 0) return 3
+  else if (down === 0 && same === 0 && up > 0) return 1
+  else if (up === 0 && down > 0 && same > 0) return 4
+  else if (down === 0 && up > 0 && same > 0) return 2
+  else if (up === 0 && down === 0 && same > 0) return 5
+  else if (up > 0 && down > 0) return 0
+}
