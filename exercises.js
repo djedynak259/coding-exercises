@@ -386,3 +386,12 @@ function sequenceClassifier(arr){
   else if (up === 0 && down === 0 && same > 0) return 5
   else if (up > 0 && down > 0) return 0
 }
+
+// Factorial Value
+
+function FirstFactorial(num) { 
+    if (num > 0) return num * FirstFactorial(num-1);
+    else return 1
+}
+
+
