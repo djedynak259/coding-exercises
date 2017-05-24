@@ -394,4 +394,16 @@ function FirstFactorial(num) {
     else return 1
 }
 
+// Reverse String
+
+var  FirstReverse = (str) => str.split('').reverse().join('')
+
+  //  Or
+
+  function FirstReverse(str) { 
+    var split = str.split('');
+    var reverse = split.reverse();
+    var join = reverse.join(''); 
+  return join 
+}
 
