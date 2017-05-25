@@ -498,3 +498,11 @@ function CheckNums(num1,num2) {
     }
 }
 
+// Change minutes to hours
+
+function TimeConvert(num) { 
+    var hours = Math.floor(num / 60);
+    var minutes = num % 60;
+  return `${hours}:${minutes}`; 
+}
+
