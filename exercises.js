@@ -442,3 +442,16 @@ function SimpleAdding(num) {
   return sum; 
 }
 
+// Upper Case first word of each String
+
+function LetterCapitalize(str) { 
+    str = str.split('')
+    str[0] = str[0].toUpperCase();
+    for(var i =0;i<str.length;i++){
+        if(str[i] === ' '){
+            str[i+1] = str[i+1].toUpperCase();
+        }
+    }
+  return str.join(''); 
+}
+
