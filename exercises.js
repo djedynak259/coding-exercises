@@ -432,3 +432,13 @@ function LetterChanges(str) {
   return strArr.join(''); 
 }
 
+// Add numbers up to argument
+
+function SimpleAdding(num) { 
+    var sum = 0;
+    for(var i=1;i<=num;i++){
+        sum += i
+    }
+  return sum; 
+}
+
