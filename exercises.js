@@ -455,3 +455,20 @@ function LetterCapitalize(str) {
   return str.join(''); 
 }
 
+// Check characters surrounding letters
+
+function SimpleSymbols(str) { 
+    var check;
+    for(var i =0;i<str.length;i++){
+        if(str.charAt(i) == str[i].match(/[A-Z|a-z]/)) {
+            if(str.charAt(i-1) === '+' && str.charAt(i+1) === '+'){
+                check = true;
+            } else {
+                check = false;
+                break;
+            }
+        }
+    }
+    return check; 
+}
+
