@@ -419,3 +419,16 @@ function LongestWord(sen) {
   return largest;      
 }
 
+// String Modify increaes character code +1
+
+function LetterChanges(str) {
+    var strArr = str.split('')
+    for (var i=0;i<strArr.length;i++) {
+        var code = strArr[i].charCodeAt(0);
+        if(strArr[i].match(/[a-z|A-Z]/)) {
+            strArr[i] = String.fromCharCode(code + 1)
+        }
+    } 
+  return strArr.join(''); 
+}
+
