@@ -506,3 +506,7 @@ function TimeConvert(num) {
   return `${hours}:${minutes}`; 
 }
 
+// Alphabetical Order
+
+var AlphabetSoup = str => str.split('').sort().join(''); 
+
