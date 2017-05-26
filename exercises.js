@@ -554,3 +554,33 @@ function Palindrome(str) {
   return str.split('').reverse().join('') === str ? true : false
 }
 
+// Hoiseing Exercise
+
+function test() {
+  console.log(a);
+  console.log(foo());
+   
+  var a = 1;
+  function foo() {
+    return 2;
+  }
+}
+
+test();
+
+  // looks like
+
+  function test() {
+    var a;
+    function foo() {
+      return 2;
+    }
+
+    console.log(a);
+    console.log(foo());
+   
+    a = 1;
+  }
+
+  test();
+
