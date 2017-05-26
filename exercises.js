@@ -523,3 +523,10 @@ function ABCheck(str) {
     return false        
 }
 
+// Count Vowels
+
+function VowelCount(str) { 
+    str = str.match(/[aeiou]/gi)
+    return str.length;        
+}
+
