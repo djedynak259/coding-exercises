@@ -538,3 +538,12 @@ function WordCount(str) {
          
 }
 
+// X and O count
+
+function WordCount(str) { 
+    str = str.split(' ')
+      
+    return str.length; 
+         
+}
+
