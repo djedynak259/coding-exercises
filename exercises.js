@@ -530,3 +530,11 @@ function VowelCount(str) {
     return str.length;        
 }
 
+// Number of words in String
+
+function WordCount(str) { 
+    str = str.split(' ');  
+    return str.length; 
+         
+}
+
