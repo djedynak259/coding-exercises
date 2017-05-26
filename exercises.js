@@ -547,3 +547,10 @@ function WordCount(str) {
          
 }
 
+// String Pallindrom?
+
+function Palindrome(str) { 
+  str = str.replace(/\W/g,'')
+  return str.split('').reverse().join('') === str ? true : false
+}
+
