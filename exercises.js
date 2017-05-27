@@ -584,3 +584,20 @@ test();
 
   test();
 
+// Sequences
+
+function ArithGeo(arr) { 
+  if (checkArith(arr) !== false) { return 'Arithmetic'; }
+  if (checkGeo(arr) !== false) { return 'Geometric'; }
+  return -1;
+}
+
+function checkArith(arr) {
+  const diff = arr[1] - arr[0];
+  return arr.reduce((num, next) => next - num !== diff || next === false ? false : next);
+}
+
+function checkGeo(arr) {
+  const ratio = arr[1] / arr[0];
+  return arr.reduce((num, next) => next / num !== ratio || next === false ? false : next);
+}
