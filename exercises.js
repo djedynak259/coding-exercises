@@ -601,3 +601,18 @@ function checkGeo(arr) {
   const ratio = arr[1] / arr[0];
   return arr.reduce((num, next) => next / num !== ratio || next === false ? false : next);
 }
+
+// Find largest number in array, check to see if remainding numbers add up to largest
+
+function ArrayAdditionI(arr) { 
+    var largest = arr.reduce((a,b) =>{
+        if (b > a) return b
+        else return a
+    })
+    var removed = arr.splice(arr.indexOf(largest),1);
+    if(largest === arr.reduce((a,b)=>a+b)){
+      return true
+    } else return false
+}
+
+
