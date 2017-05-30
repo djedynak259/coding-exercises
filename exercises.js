@@ -627,3 +627,27 @@ function PrimeTime(num) {
   if(count > 1)return false
   else return true
 }
+
+// Run Length
+
+function RunLength(str) { 
+  str = str.split('')
+  var count = 1;
+  var newarr=[];
+  str.reduce((a,b)=>{
+    if(a === b) {
+      count ++
+      return b
+    } else {
+      newarr.push(count)
+      newarr.push(a)
+      count=1
+      return b
+    }
+  })
+    newarr.push(count)
+    newarr.push(str.pop())
+    return newarr.join('')
+}
+
+
