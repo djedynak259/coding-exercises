@@ -650,4 +650,60 @@ function RunLength(str) {
     return newarr.join('')
 }
 
+// Critical Path in progress
+
+console.clear()
+
+function ShortestPath(strArr) {
+    var currentNode=strArr[1];
+    var nodes = [];
+    var paths = [];
+    var count =null;
+    var tempCount = 0;
+    var shortPath=[];
+    var tempPath=[];
+    for (var i =1; i<= strArr[0];i++) {
+        nodes.push(strArr[i])
+    }
+    for (var i =+strArr[0]+1; i<(strArr.length);i++) {
+      paths.push(strArr[i])
+    }
+    console.log(nodes, paths)
+
+    
+    function travel () {
+      console.log('travel', currentNode)
+      for (var i =0; i < paths.length; i++) {
+        console.log('i',i)
+        if(paths[i].charAt(0) === currentNode) {
+          tempPath.push(paths[i])
+          currentNode = paths[i].charAt(2)
+          tempCount++;
+          console.log(tempPath)
+          if(currentNode == nodes[nodes.length-1]) {
+            if(count === null || tempCount<count) {
+              count=tempCount
+              shortPath=tempPath;
+              
+              console.log('newset',count,shortPath)
+            } 
+            currentNode=strArr[1]
+            tempPath=[]
+            tempCount=0;
+//             console.log('',tempCount, tempPath, currentNode)
+
+          }
+          travel()
+        }
+        
+      }
+    }
+    travel()
+    
+
+}
+
+
+ShortestPath(["5","A","B","C","D","F","B-D","A-B","A-C","B-C","C-D","D-F"]);
+
 
