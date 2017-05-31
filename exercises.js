@@ -706,4 +706,25 @@ function ShortestPath(strArr) {
 
 ShortestPath(["5","A","B","C","D","F","B-D","A-B","A-C","B-C","C-D","D-F"]);
 
+// Find nth Prime Number
+
+function PrimeMover(num) { 
+  var primes = [];
+  var count=0;
+  for (var j = 2;j < 10000; j++ ) {
+    for (var i = 1; i < j; i++) { 
+      if (j % i === 0) {
+        count++
+      }
+    }
+    if(count <= 1) {
+      primes.push(j)
+    }
+    count=0;
+    if(primes[num]){
+      return primes[num-1]
+    }
+  }         
+}
+
 
