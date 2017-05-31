@@ -727,4 +727,20 @@ function PrimeMover(num) {
   }         
 }
 
+// Palindrome II
+
+function PalindromeTwo(str) { 
+    var match = false;
+    var lower = str.toLowerCase();
+    var edited= lower.match(/[a-z]/gi);
+    var first = edited.slice(0,edited.length/2);
+    var second = edited.slice(Math.ceil(edited.length/2),edited.length+1).reverse();
+    for(var i =0; i < first.length; i++) {
+        if(first[i] === second[i] ){
+          match = true;
+        } else return false;
+    }    
+  return match;
+}
+
 
