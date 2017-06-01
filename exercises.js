@@ -743,4 +743,27 @@ function PalindromeTwo(str) {
   return match;
 }
 
+// Find Greatest Common Factor
+
+function Division(num1,num2) { 
+  var num1Arr = [];
+  var num2Arr = [];
+  var match;
+  for (var i = num1; i > 0;i--) {
+    if(num1 % i === 0) {
+      num1Arr.push(i)
+    }
+  }
+    for (var i = num2; i > 0;i--) {
+    if(num2 % i === 0) {
+      num2Arr.push(i)
+    }
+  }
+  for(var i=0;i<num1Arr.length;i++){
+    if(num2Arr.includes(num1Arr[i])) {
+      return num1Arr[i];
+    }
+  }
+}
+
 
