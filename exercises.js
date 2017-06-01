@@ -766,4 +766,19 @@ function Division(num1,num2) {
   }
 }
 
+// String Matching
+
+function StringScramble(str1,str2) { 
+   var match ='';
+   for (var i=0;i<str2.length;i++) {
+     if(str1.includes(str2[i])) {
+       match+=str2[i]
+       console.log(match)
+     }
+   }
+   if(match === str2){
+     return true
+   } else return false
+}
+
 
