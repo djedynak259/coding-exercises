@@ -1074,10 +1074,10 @@ function Dequeue() {
   }
 }
 
-  Enqueue('a'); 
-  Enqueue('b'); 
-  Enqueue('c'); 
-  Dequeue();
+Enqueue('a'); 
+Enqueue('b'); 
+Enqueue('c'); 
+Dequeue();
 
 
 //  Stacks
@@ -1106,10 +1106,10 @@ function Dequeue() {
   return Stack2.pop();
 }
 
-  Enqueue('a');
-  Enqueue('b');
-  Enqueue('c');
-  Dequeue(); 
+Enqueue('a');
+Enqueue('b');
+Enqueue('c');
+Dequeue(); 
 
 //  Two Sum Problem  O(n)
 
