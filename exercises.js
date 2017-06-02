@@ -916,3 +916,123 @@ while (fastPointer.next !== null && fastPointer.next.next !== null) {
 // slowPointer is now at the middle node in the linked list
 slowPointer.data  
 
+
+// Binary Tree Traversing
+
+  //  Setup
+
+    function Node(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+    }    
+
+    // create nodes
+    var root = new Node('A');
+    var n1 = new Node('B');
+    var n2 = new Node('C');
+    var n3 = new Node('D');
+    var n4 = new Node('E');
+
+    // setup children
+    root.left = n1;
+    root.right = n2;
+    n1.left = n3;
+    n1.right = n4;
+
+
+
+  // Pre-order
+
+  // 1) Return the root node value.
+  // 2) Traverse the left subtree by recursively calling the pre-order function.
+  // 3) Traverse the right subtree by recursively calling the pre-order function.
+
+  function pre_order(root, nodes) {
+    nodes.push(root.data);
+    if (root && root.left) {
+        pre_order(root.left, nodes);   
+    }
+    if (root && root.right) {
+        pre_order(root.right, nodes);  
+    }
+    return nodes;
+  }
+
+  pre_order(root, []); // => [ A, B, D, E, C ]
+
+
+
+  // In-order
+
+  // 1) Traverse the left subtree by recursively calling the in-order function.
+  // 2) Return the root node value.
+  // 3) Traverse the right subtree by recursively calling the in-order function.
+
+  function in_order(root, nodes) {
+    if (root && root.left) {
+        in_order(root.left, nodes);   
+    }
+    nodes.push(root.data);
+    if (root && root.right) {
+        in_order(root.right, nodes);  
+    }
+    return nodes;
+  }
+
+  in_order(root, []); // => [ D, B, E, A, C ]
+
+
+
+  // Post-order
+
+  // 1) Traverse the left subtree by recursively calling the in-order function.
+  // 2) Traverse the right subtree by recursively calling the in-order function.
+  // 3) Return the root node value.
+
+  function post_order(root, nodes) {
+    if (root && root.left) {
+        post_order(root.left, nodes);   
+    }
+    if (root && root.right) {
+        post_order(root.right, nodes);  
+    }
+    nodes.push(root.data);
+    return nodes;
+  }
+
+  post_order(root, []); // => [ D, E, B, C, A ]
+
+
+
+  // Level-order
+
+  // 1) Add the root to a queue.
+  // 2) Pop the last node from the queue, and return its value.
+  // 3) Add all children of popped node to queue, and continue from step 2 until queue is empty.
+
+  function level_order(root, nodes) {
+    var queue = [root];
+    while (queue.length > 0) {
+        // front of queue is at element 0 and we push elements to back of queue
+        var n = queue.shift();
+        nodes.push(n.data);
+        if (n.left !== null) { queue.push(n.left); }
+        if (n.right !== null) { queue.push(n.right); }
+    }
+    return nodes;
+  }
+
+  level_order(root, []); // => [ A, B, C, D, E ]
+
+
+  // Applications of tree traversals
+ 
+  // The algorithms above have several use cases in software and development. Below is a list of some of these common cases:
+
+  // 1) To construct any binary tree, you need the in-order traversal array of nodes and either a pre-order or post-order array.
+  // 2) A binary search tree can be constructed using only its pre-order traversal array.
+  // 3) The in-order traversal of a binary search tree produces the elements in sorted order.
+  // 4) You can perform a breadth-first search on a tree using a level-order traversal.
+
+
