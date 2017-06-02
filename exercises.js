@@ -859,3 +859,4 @@ function Calculator(str) {
   
   return str[0]
 }
+
