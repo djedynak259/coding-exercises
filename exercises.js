@@ -860,3 +860,23 @@ function Calculator(str) {
   return str[0]
 }
 
+// Off Line Minimum
+
+function OffLineMinimum(strArr) { 
+    var current = [];
+    var final = '';
+    for (var i =0; i < strArr.length;i++) {
+      if(strArr[i].match(/\d/)){
+         current.push(+strArr[i])
+         console.log(current)
+      } else if (strArr[i] === 'E') {
+        min =  Math.min.apply(null,current)
+        console.log(min)
+        console.log(current.indexOf(min))
+        final += `${current.splice(current.indexOf(min),1)},`
+      }
+      console.log('final',final)
+    } 
+  return final.substring(0,final.length-1);
+}
+
