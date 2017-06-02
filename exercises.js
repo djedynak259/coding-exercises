@@ -781,4 +781,81 @@ function StringScramble(str1,str2) {
    } else return false
 }
 
+// Calculator in progress, fix parenthesis
 
+function Calculator(str) { 
+  str = str.split('');
+  stringFix(str);
+  console.log(str);
+    
+  for (var i=0;i<str.length;i++) {
+    if(str[i] === '(') {
+      var index = str.indexOf('(')
+      var removed = str.splice(str.indexOf('('),str.lastIndexOf(')')-str.indexOf('(')+1)
+      removed.pop();
+      removed.shift();
+      mD(removed);
+      aS(removed);
+
+      if(str[i-1].match(/\d/)) {
+        str.splice(index, 0, '*', removed[0])
+      } else {
+        str.splice(index, 0, removed[0])
+      }
+      
+      console.log(removed,str,index)
+    }
+  }
+  
+  function stringFix(strr) {
+    for(var i=0;i<strr.length-1;i++){
+      if(strr[i].match(/\d/) && strr[i+1].match(/\d/)) {
+        strr.splice(i, 2, strr[i] + strr[i+1])
+        console.log(strr)
+        stringFix(strr);
+      } else {
+        
+      }
+    }
+  }
+  
+  function mD(strr) {
+    for (var i=0;i<strr.length;i++) {
+       if(strr[i] === '/' || strr[i] === '*'){
+          if(strr[i] === '/') {
+            strr.splice(i-1,3,+strr[i-1]/+strr[i+1])
+            console.log(strr)
+            mD(strr)
+          }
+           if(strr[i] === '*') {
+            strr.splice(i-1,3,+strr[i-1]*+strr[i+1])
+            console.log(strr)
+            mD(strr)
+          }
+       }
+    }
+  }
+  
+  function aS(strr) {
+    for (var i=0;i<strr.length;i++) {
+      console.log(strr[i])
+       if(strr[i] === '+' || strr[i] === '-'){
+          if(strr[i] === '+') {
+            strr.splice(i-1,3,+strr[i-1]+ +strr[i+1])
+            console.log(strr)
+            aS(strr)
+          }
+           if(strr[i] === '-') {
+            strr.splice(i-1,3,+strr[i-1]- +strr[i+1])
+            console.log(strr)
+            aS(strr)
+          }
+       }
+    }
+  }
+ 
+  mD(str)
+  aS(str)
+  
+  return str[0]
+}
