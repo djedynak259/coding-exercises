@@ -1291,4 +1291,15 @@ function duplicates(arr) {
 
 duplicates([1, 21, -4, 103, 21, 4, 1]);
 
+// Count missing consequtive numbers
 
+function Consecutive(arr) { 
+  let count = 0;
+  for(var i = arr[0]; i < arr[arr.length-1];i++) {
+    if (!arr.includes(i)) {
+      count++;
+    }
+    console.log(i)
+  }
+  return count
+}
