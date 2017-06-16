@@ -1304,4 +1304,44 @@ function Consecutive(arr) {
   return count
 }
 
+// Permutations find next largest of input number
+
+function PermutationStep(num) {
+  num = '' + num;
+  let allSame = true;
+  for (let i = 0; i < num.length - 1; i++) {
+    if (num[i] !== num[i + 1]) {
+      allSame = false;
+      break;
+    }
+  }
+  if (allSame) { return - 1 }
+
+  const end  = num.length - 1
+  if (num[end - 1] < num[end]) { return num.slice(0, end - 1).concat(num[end]).concat(num[end - 1]) }
+  else {
+    for (let i = num.length - 3; i > -1; i--) {
+      if (num[i] < num[num.length - 1]) {
+        console.log(':/')
+        return num.slice(0, i)
+          .concat(num[num.length - 1])
+          .concat(num.slice((i + 1), (num.length - 1)))
+          .concat(num[i]); 
+      }
+    }
+    for (let i = num.length - 2; i > 0; i--) {
+      for (let j = i - 1; j > -1; j--) {
+        if (num[i] > num[j]) {
+          console.log('i: ', i, ' j: ', j)
+          return num.slice(0, j)
+            .concat(num[i])
+            .concat(num.slice((j + 1), i))
+            .concat(num[j])
+            .concat(num.slice(i + 1));
+        }
+      }
+    }
+  }
+  return -1;
+}
 
