@@ -1345,3 +1345,4 @@ function PermutationStep(num) {
   return -1;
 }
 
+
