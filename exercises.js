@@ -1345,4 +1345,26 @@ function PermutationStep(num) {
   return -1;
 }
 
+// Compare Mode and Mean to match
 
+function MeanMode(arr) { 
+  let mean = 0;
+  let modeObj = {};
+  let mode = 0;
+  let count = 0;
+  mean = (arr.reduce((a,b)=>a+b)/arr.length);
+  
+  for (var i=0;i<arr.length;i++) {
+
+    if(modeObj[arr[i]] == null){
+      modeObj[arr[i]] = 1;  
+      }
+    else
+      { modeObj[arr[i]]++}
+    if(modeObj[arr[i]]>count) {
+      count = modeObj[arr[i]];
+      mode = arr[i];
+    }
+  }
+   return mode === mean ? 1 :0
+}
