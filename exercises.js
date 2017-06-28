@@ -1368,3 +1368,21 @@ function MeanMode(arr) {
   }
    return mode === mean ? 1 :0
 }
+
+// CSumMultiplier
+
+function SumMultiplier(arr) { 
+  let sumDouble = 2 * (arr.reduce((a,b)=>a+b));
+  let largest = 0;
+  let second = 0;
+  let el = arr.reduce((a,b) =>{
+    if(b>a){
+      largest = b;
+      second = a;
+      return b
+    } else return a
+  })
+  return largest * second > sumDouble ? true : false   
+}
+
+
