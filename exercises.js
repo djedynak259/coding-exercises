@@ -1369,7 +1369,7 @@ function MeanMode(arr) {
    return mode === mean ? 1 :0
 }
 
-// CSumMultiplier
+// SumMultiplier
 
 function SumMultiplier(arr) { 
   let sumDouble = 2 * (arr.reduce((a,b)=>a+b));
@@ -1385,4 +1385,20 @@ function SumMultiplier(arr) {
   return largest * second > sumDouble ? true : false   
 }
 
+// Bubble Sort
 
+function bubblesort(arr) {
+  var swapped = true;
+  while (swapped) {
+    swapped = false;
+    for (var i = 1; i < arr.length; i++) {
+      if (arr[i-1] > arr[i]) {
+        var temp = arr[i-1];
+        arr[i-1] = arr[i];
+        arr[i] = temp;
+        swapped = true;
+      }
+    } 
+  }
+  return arr;      
+}
