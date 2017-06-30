@@ -1402,3 +1402,19 @@ function bubblesort(arr) {
   }
   return arr;      
 }
+
+// String Character Case Swap
+
+function SwapCase(str) { 
+  var neww ='';
+  for(var e=0;e<str.length;e++){
+    if(str[e] == str[e].toUpperCase()){
+      neww += str[e].toLowerCase()
+    }
+    else if(str[e] == str[e].toLowerCase()){
+      neww += str[e].toUpperCase()
+    }
+  }
+  return neww
+}
+
