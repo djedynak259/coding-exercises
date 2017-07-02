@@ -1418,3 +1418,4 @@ function SwapCase(str) {
   return neww
 }
 
+
