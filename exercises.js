@@ -1418,4 +1418,17 @@ function SwapCase(str) {
   return neww
 }
 
+// Array Additions
+
+function ArrayMatching(strArr) { 
+  var arr1 = strArr[0].replace(/\[|\]|\,/g, '').split(' ');
+  var arr2 = strArr[1].replace(/\[|\]|\,/g, '').split(' ');
+  var length = arr1.length > arr2.length ? arr1.length : arr2.length;
+  var string = '';
+    console.log(+arr1[0]+ +arr2[0])
+  for(var i = 0; i < length; i++) {
+    string += `-${(+arr1[i] ? +arr1[i]:0) + (+arr2[i] ? +arr2[i]:0)}`
+  }
+  return string.slice(1)
+}
 
