@@ -1432,3 +1432,20 @@ function ArrayMatching(strArr) {
   return string.slice(1)
 }
 
+// Array Addition option 2
+
+function ArrayMatching(strArr) { 
+  var arr1 = JSON.parse(strArr[0]);
+  var arr2 = JSON.parse(strArr[1]);
+  var length = arr1.length > arr2.length ? arr1.length : arr2.length;
+  var result = [];
+  for(var i = 0; i < length; i++) {
+      if(arr2[i] === undefined || arr1[i] === undefined) {
+        result.push(arr1[i] ? arr1[i] : arr2[i]);
+      } else {
+        result.push(arr1[i] + arr2[i]);
+      }
+  }
+  return result.join('-');
+}
+
