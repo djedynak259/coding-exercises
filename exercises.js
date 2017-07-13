@@ -1562,3 +1562,22 @@ var L2 = n4;
 
 merge(L1, L2); 
 
+// Find lowest common ancestor in binary search tree
+
+function BinarySearchTreeLCA(strArr) { 
+    var array = JSON.parse(strArr[0]);
+    let num1 = parseInt(strArr[1]);
+    let num2 = parseInt(strArr[2]);
+
+    let ind1 = array.findIndex(val => val === num1);
+    let ind2 = array.findIndex(val => val === num2);
+    let rightEdge = Math.max(ind1, ind2);
+    
+    let result = array.filter((val,ind) => (val >= Math.min(num1,num2) && val <= Math.max(num1,num2) && ind <= rightEdge))
+    
+    console.log(ind1,ind2,rightEdge, result)
+    
+    return result.length === 0 ? ind1 < ind2 ? strArr[1] : strArr[2] : result[0].toString()
+         
+}
+
