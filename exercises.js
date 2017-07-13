@@ -1472,3 +1472,24 @@ function ThirdGreatest(strArr) {
   return third
 }
 
+// Solve Reverse Polish Notation
+
+function ReversePolishNotation(str) { 
+  let strArr = str.split(' ');
+  let sym = '';
+  let stack1 = [];
+  let stack2 = [];
+
+  for(var i=0;i<strArr.length;i++){
+    if(strArr[i].match(/\d/g)){
+      stack1.push(strArr[i])
+    }
+    else if(strArr[i].match(/[\*\+\-\/]/g)){
+      stack2.unshift(stack1.pop())
+      stack2.unshift(stack1.pop())
+      stack1.push(eval(stack2.join(strArr[i])).toString())
+      stack2=[];
+    }  
+  }
+  return eval(+stack1)
+}
