@@ -1493,3 +1493,22 @@ function ReversePolishNotation(str) {
   }
   return eval(+stack1)
 }
+
+// Alternate Reverse Polish without using string eval
+
+function ReversePolishNotation(str) {
+    var arr = str.split(' ').map(function(val) {return parseInt(val) ? parseInt(val) : val});
+    var len = arr.length;
+    var operations = {
+        '+': function(a, b) {return a + b},
+        '-': function(a, b) {return a - b},
+        '*': function(a, b) {return a * b},
+        '/': function(a, b) {return a / b}
+    }
+
+    while (arr.length > 1) {
+        var opLoc = arr.findIndex(function(val) {return '+-*/'.includes(val)})
+        arr.splice(opLoc - 2, 3, operations[arr[opLoc]](arr[opLoc - 2], arr[opLoc - 1]));
+    }
+    return arr[0];
+}
