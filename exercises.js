@@ -1603,18 +1603,15 @@ function SymmetricTree(strArr) {
 // Alternate for symetric tree
 
 function SymmetricTree(strArr) {
-  let x = 1;
   let count = 0;
   while (strArr.length) {
-    x++;
-    if (x > 10) break;
     let length = Math.pow(2, count);
     let newArray = strArr.splice(0, length);
     let revArray = Array.from(newArray).reverse();
     if(!sameAs(newArray, revArray)) {
       return false;
     }
-    count = newArray.filter(val => val !== '#').length;
+    count = newArray.filter(val => val).length;
   }
   return true;
 }
