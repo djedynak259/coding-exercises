@@ -1583,7 +1583,6 @@ function BinarySearchTreeLCA(strArr) {
 
 // Check to see if tree is symetric
 
-
 function SymmetricTree(strArr) { 
     let array = strArr.map(e => e.match(/\d/g) ? parseInt(e) : e);
     array.shift();
@@ -1599,5 +1598,28 @@ function SymmetricTree(strArr) {
     }
     
     return mirror1.toString() === mirror2.toString() ? true : false;
+}
+
+// Alternate for symetric tree
+
+function SymmetricTree(strArr) {
+  let x = 1;
+  let count = 0;
+  while (strArr.length) {
+    x++;
+    if (x > 10) break;
+    let length = Math.pow(2, count);
+    let newArray = strArr.splice(0, length);
+    let revArray = Array.from(newArray).reverse();
+    if(!sameAs(newArray, revArray)) {
+      return false;
+    }
+    count = newArray.filter(val => val !== '#').length;
+  }
+  return true;
+}
+
+function sameAs(arr1, arr2) {
+  return arr1.every((val, ind) => val === arr2[ind]);
 }
 
