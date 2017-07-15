@@ -1620,3 +1620,35 @@ function sameAs(arr1, arr2) {
   return arr1.every((val, ind) => val === arr2[ind]);
 }
 
+// Lowest common ancestor of binary tree
+
+function BinaryTreeLCA(strArr) {
+    //first, convert the string representing the tree into an array of numbers 
+    let arrList = strArr[0]
+        .replace(/[[]]/g, '')
+        .split(/,s*/)
+        .map(val => val !== '#' ? parseInt(val, 10) : "#");
+    
+    //convert the given numbers (strings) into numbers
+    let num1 = parseInt(strArr[1], 10);
+    let num2 = parseInt(strArr[2], 10);
+    
+    //get the indexes of the given numbers. This is really what we need
+    let ind1 = Math.max(arrList.findIndex(val => val === num1) + 1, arrList.findIndex(val => val === num2) + 1);
+    let ind2 = Math.min(arrList.findIndex(val => val === num1) + 1, arrList.findIndex(val => val === num2) + 1);
+
+    //get the two numbers onto the same depth in the tree
+    while (Math.trunc(Math.log2(ind1)) !== Math.trunc(Math.log2(ind2))) {
+      ind1 = Math.trunc(ind1 / 2);
+    }
+
+    //find the common ancestor in the tree
+    while (ind1 !== ind2) {
+      ind1 = Math.trunc(ind1 / 2);
+      ind2 = Math.trunc(ind2 / 2);
+    }
+
+    //return the number corresponding to the determined index
+    return arrList[ind2 - 1].toString();
+}
+
