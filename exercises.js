@@ -1625,9 +1625,9 @@ function sameAs(arr1, arr2) {
 function BinaryTreeLCA(strArr) {
     //first, convert the string representing the tree into an array of numbers 
     let arrList = strArr[0]
-        .replace(/[[]]/g, '')
+        .replace(/[\[\]]/g, '')
         .split(/,s*/)
-        .map(val => val !== '#' ? parseInt(val, 10) : "#");
+        .map(val => val !== ' #' ? parseInt(val) : '#');
     
     //convert the given numbers (strings) into numbers
     let num1 = parseInt(strArr[1], 10);
