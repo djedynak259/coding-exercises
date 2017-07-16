@@ -1652,3 +1652,40 @@ function BinaryTreeLCA(strArr) {
     return arrList[ind2 - 1].toString();
 }
 
+// Is array Max Heap?
+
+function MaxHeapChecker(arr) {
+    var results = [];
+    arr.forEach(function(val, ind) {
+        var level = findLevelPlace(ind)[0];
+        var order = findLevelPlace(ind)[1];
+        var compareIndex = findIndex(level + 1, order);
+        if(val < arr[compareIndex]) {
+            results.push(arr[compareIndex]);
+        }
+        if (val < arr[compareIndex + 1]) {
+            results.push(arr[compareIndex + 1]);
+        }
+    });
+        return results.length === 0 ? 'max' : results.join(',');
+}
+
+function findLevelPlace(num) {
+    var power = 0;
+    while (num >= 0) {
+        var hold = num;
+        num -= Math.pow(2, power);
+        power++;
+    }
+    return [power - 1, hold];
+}
+
+function findIndex(num1, num2) {
+    var counter = 0;
+    for (var i = 0; i < num1; i++) {
+        counter += Math.pow(2, i);
+    }
+    counter += (2 * num2);
+    return counter;
+}
+
