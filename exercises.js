@@ -1689,3 +1689,57 @@ function findIndex(num1, num2) {
     return counter;
 }
 
+// Find Shortest Path
+
+function ShortestPath(strArr) {
+    var nodesCount = Number(strArr[0]);
+    var nodes = new Map();
+
+    for (var i = 0; i < nodesCount; i++) {
+        nodes.set(strArr[i + 1], new Set());
+    }
+
+    for (var i = nodesCount + 1; i < strArr.length; i++) {
+        var points = strArr[i].split('-');
+        nodes.get(points[0]).add(points[1]);
+        nodes.get(points[1]).add(points[0]);
+    }
+
+    var toFind = strArr[nodesCount];
+    var shortestPathLength = Number.MAX_VALUE;
+    var shortestPath = null;
+
+    function findTarget(currentSet, nextNode) {
+        currentSet.add(nextNode);
+        var children = nodes.get(nextNode);
+        if (children.has(toFind)) {
+            currentSet.add(toFind);
+            shortestPath = currentSet;
+            shortestPathLength = currentSet.size;
+            return;
+        } else {
+            if (shortestPathLength <= currentSet.size + 1)
+                return;
+            for (n of children) {
+                if (currentSet.has(n))
+                    continue;
+                findTarget(new Set(currentSet), n)
+            }
+        }
+    }
+
+    findTarget(new Set(), strArr[1]);
+    if (!shortestPath)
+        return -1;
+    var res = "";
+    var i = 0;
+    for (n of shortestPath) {
+        if (i > 0)
+            res += '-';
+        i++;
+        res += n;
+    }
+
+    return res;
+}
+
