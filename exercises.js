@@ -1801,3 +1801,58 @@ function WeightedPath(strArr) {
 }
 WeightedPath(["4","A","B","C","D", "A|B|2", "C|B|11", "C|D|3", "B|D|2"])
 
+// lowest weight path without maps
+
+function makeRoute(from, to, weight) {
+  return {
+    from: from,
+    to: to,
+    weight: weight
+  };
+}
+
+function WeightedPath(strArr) { 
+  var places = {};
+  var nPlaces = strArr[0]*1;
+  for (var i = 1; i <= nPlaces; i++) {
+    places[strArr[i]] = {
+      name: strArr[i],
+      path: '',
+      weight: 0,
+      routes: {}
+    };
+  }
+  for (i = nPlaces + 1; i < strArr.length; i++) {
+    var route = strArr[i].split('|');
+    var placeA = places[route[0]], 
+        placeB = places[route[1]], 
+        weight = route[2]*1;
+    placeA.routes[route[1]] = makeRoute(placeA, placeB, weight);
+    placeB.routes[route[0]] = makeRoute(placeB, placeA, weight);
+  }
+  var start = places[strArr[1]];
+  var finish = places[strArr[nPlaces]];
+  start.path = start.name;
+  var pending = [makeRoute(start, start, 0)];
+  while (pending.length > 0) {
+    var route = pending.shift();
+    var here = route.to;
+    here.weight = route.weight + route.from.weight;
+    if (here.path === '') {
+      here.path = route.from.path + '-' + here.name;
+    }
+    if (here === finish) {
+      return finish.path;
+    }
+    for(var route in here.routes) {
+      if (here.routes[route].to.path === '') {
+        pending.push(here.routes[route]);
+      }
+    }
+    pending.sort(function (a,b) {
+      return (a.from.weight + a.weight) - (b.from.weight + b.weight);
+    });
+  }
+  return -1;
+}
+
