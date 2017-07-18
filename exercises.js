@@ -1746,114 +1746,58 @@ function ShortestPath(strArr) {
 // Find best weighted path graph
 
 function WeightedPath(strArr) {
-    //get the number of nodes
-    var nodeNum = parseInt(strArr.shift());
+    var nodesCount = Number(strArr[0]);
+    var nodes = new Map();
 
-    //create Apple copy of the array argument, rather than a pointer to it.
-    var newArr = strArr.map(function(val){return val});
-
-    //replace the proper names with letters, for simplicity
-    var modArr = convertArray(newArr);
-    //=>[ 'A', 'B', 'C', 'D', 'A|B|1', 'B|D|9', 'B|C|3', 'C|D|4' ]
-
-    //get an array, containing an object of nodes, and for each an array of connections
-    var connections = createObject(modArr);
-    //=>{ A: [], B: [], C: [], D: [] } [ 'A|B|1', 'B|D|9', 'B|C|3', 'C|D|4' ]
-
-    //then convert to an object of key-values (node: [connections])
-    var connectionsObject = makeObject(connections);
-    //=>{ A: [ [ 'B', 1 ] ], B: [ [ 'A', 1 ], [ 'D', 9 ], [ 'C', 3 ] ], C: [ [ 'B', 3 ], [ 'D', 4 ] ], D: [ [ 'B', 9 ], [ 'C', 4 ] ] }
-
-    var fullPaths = paths(connectionsObject);
-    //=>[ [ 'ABD', 10 ], [ 'ABCD', 8 ] ]
-
-
-    if (fullPaths.length) {
-        var winner = fullPaths.sort(function(b,a) {return(a[1] - b[1])}).pop();
-        return finalForm(winner[0]);
+    for (var i = 0; i < nodesCount; i++) {
+        nodes.set(strArr[i + 1], []);
     }
-    else {
+
+    for (var i = nodesCount + 1; i < strArr.length; i++) {
+        var points = strArr[i].split('|');
+        nodes.get(points[0]).push([points[1], Number(points[2])]);
+        nodes.get(points[1]).push([points[0], Number(points[2])]);
+    }
+
+    var toFind = strArr[nodesCount];
+
+    var shortestPath = null;
+    var shortestCost = Number.MAX_VALUE;
+
+    function findTarget(currentSet, currentCost, nextNode, cost) {
+        currentCost += cost;
+        if (shortestCost <= currentCost)
+            return;
+        currentSet.add(nextNode);
+            var children = nodes.get(nextNode);
+        if (toFind === nextNode) {
+            shortestPath = currentSet;
+            shortestCost = currentCost;
+            return;
+        } else {
+            for (n of children) {
+                if (currentSet.has(n[0]))
+                    continue;
+                findTarget(new Set(currentSet), currentCost, n[0], n[1])
+            }
+        }
+    }
+
+    findTarget(new Set(), 0, strArr[1], 0);
+    if (!shortestPath)
         return -1;
+    var res = "";
+    var i = 0;
+    for (n of shortestPath) {
+        if (i > 0)
+            res += '-';
+        i++;
+        res += n;
     }
 
-//--------------------------------helper functions----------------------------
 
+    return res;
 
-    /*convertArray takes i) the nodeNum and an array of the nodes and paths, and converts each node name to
-    a letter character, just to make it easier to work with.
-    */
-    function convertArray (arr) {
-        arr = arr.map(function(val) {
-            return val.toLowerCase()
-        });
-        for (var i = 0; i < nodeNum; i++) {
-            var patt = new RegExp(arr[i]);
-            arr = arr.map(function(val) {
-                return val.replace(patt, String.fromCharCode(i + 65));
-            });
-        }
-        return arr;
-    }
-
-    function createObject(arr) {
-        var obj = {};
-        arr.forEach(function(val) {
-            if(/^w$/.test(val)) {
-                obj[val] = [];
-            }
-        });
-        arr.splice(0, nodeNum);
-        return[obj, arr];
-    }
-
-    function makeObject(arr) {
-        var connObj = arr[0];
-        var connArr = arr[1];
-        for (var char in connObj) {
-            var patt = new RegExp('(?:(?:' + char + '\|(\w))|(?:(\w)\|' + char + '))\|(\d+)');
-            connArr.forEach(function(val) {
-                var result = patt.exec(val);
-                if (result) {
-                    resFiltered = result.filter(function(val) {
-                        return val;
-                    })
-                    connObj[char].push([resFiltered[1], parseInt(resFiltered[2])]);
-                }
-            });
-        }
-        return connObj
-    }
-
-    function paths(obj) {
-        var endNode = String.fromCharCode(65 + nodeNum - 1);
-        var resultArr = [['A', 0]];
-
-       while(resultArr.some(function(val){return val[0].slice(-1) !== endNode})) {
-            var hotChar = resultArr[0][0].slice(-1);
-            if (hotChar === endNode) {
-                resultArr.push(resultArr.shift());
-            }
-            else {
-                holdArr = obj[hotChar];
-                holdArr = holdArr.filter(function(val) {
-                    return resultArr[0][0].indexOf(val[0]) === -1;
-                });
-                var oldStr = resultArr.splice(0, 1)[0];
-
-                holdArr.forEach(function(val) {
-                    resultArr.push([oldStr[0] + val[0], oldStr[1] + val[1]]);
-                });
-            }
-        }
-        return resultArr;
-    }
-
-    function finalForm(str) {
-        var truePathArr = str.split('');
-        truePathArr = truePathArr.map(function(val){
-            return strArr[val.charCodeAt(0) - 65];
-        })
-        return truePathArr.join('-');
-    }
 }
+WeightedPath(["4","A","B","C","D", "A|B|2", "C|B|11", "C|D|3", "B|D|2"])
 
