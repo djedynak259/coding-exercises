@@ -1856,3 +1856,55 @@ function WeightedPath(strArr) {
   return -1;
 }
 
+// Max zeros in a row 2D matrix
+
+function BitmapHoles(strArr) { 
+    let maxCount=0;
+    let count = 0;
+    var pos = {};
+    for(var y=0; y < strArr.length;y++){
+        for(var x=0; x < strArr[y].length;x++){
+            if(strArr[y][x] === '0'){
+                count++;
+                pos={x:x, y:y}
+                console.log(pos)
+                checkRight(pos)
+                checkUp(pos)
+                pos={};
+                console.log(maxCount)
+            }
+        }
+    }
+    
+    function checkRight (p) {
+        console.log('testright')
+        if(strArr[p.y][p.x+1] === '0'){
+            count++;
+            pos={x:p.x+1, y:p.y}
+            checkRight(pos);
+        } else {
+            maxCount = count > maxCount ? count : maxCount;
+            count=1;
+        }
+    }
+
+    function checkUp (p) {
+        console.log('testup')
+        if(p.y<strArr.length-1){
+            if(strArr[p.y+1][p.x] === '0'){
+                count++;
+                pos={x:p.x, y:p.y+1}
+                checkUp(pos);
+            } else {
+                maxCount = count > maxCount ? count : maxCount;
+                count=0;
+            }
+        } else{
+            count=0;
+        }
+    }    
+  console.log(maxCount, 'max')  
+  return maxCount; 
+         
+}
+
