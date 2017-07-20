@@ -1907,4 +1907,3 @@ function BitmapHoles(strArr) {
   return maxCount; 
          
 }
-
