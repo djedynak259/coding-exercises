@@ -2045,7 +2045,7 @@ function TreeConstructor(strArr) {
 
 function HamiltonianPath(strArr) {
 
-    connectionArray = strArr[1].slice(1, -1).split(",");
+    var connectionArray = strArr[1].slice(1, -1).split(",");
 
     connectionArray = connectionArray.map(function(val) {
         val = val.trim();
@@ -2057,7 +2057,7 @@ function HamiltonianPath(strArr) {
         return init.concat(fin)
     });
 
-    pathArray = strArr[2].slice(1, -1).split(',');
+    var pathArray = strArr[2].slice(1, -1).split(',');
     pathArray = pathArray.map(function(val){
         return val.trim();
     })
@@ -2075,5 +2075,29 @@ function HamiltonianPath(strArr) {
             return holder;
         }
     }
+}
+
+// Zero-index array
+
+function solution(A) {
+    var high = A.slice(1).reduce(function(a,b){
+            return a+b
+            });
+    var low = 0;
+    var count = 0;    
+    var i =0;
+    console.log(low,high)
+    if(high === low + 1231231){
+        return i;
+    } 
+    for(var i =0;i < A.length-1;i++){ 
+        low+=A[i]
+        high-=A[i+1]
+        console.log(low,high)
+        if(high===low){
+            return i+1
+        }
+    }
+    return -1
 }
 
