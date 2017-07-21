@@ -2080,13 +2080,17 @@ function HamiltonianPath(strArr) {
 // Zero-index array
 
 function solution(A) {
+    if (A.length === 0){
+            return -1
+    }
+    
     var high = A.slice(1).reduce(function(a,b){
             return a+b
             });
     var low = 0;
     var count = 0;    
     var i =0;
-    console.log(low,high)
+
     if(high === low){
         return i;
     } 
