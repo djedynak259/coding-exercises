@@ -2111,3 +2111,59 @@ function solution(a,b) {
     return Math.ceil(Math.sqrt(Math.abs(b))) - Math.floor(Math.sqrt(Math.abs(a)))
 }
 
+function solution(S) {
+    var arr = S.split(/[?\.!]/)
+    arr = arr.map(function(e){
+        return e.trim()
+    })
+    console.log(arr)
+    var count = 0;
+    var tempCount=0;
+    console.log(arr)
+    for(var i=0;i<arr.length;i++){
+        var newArr = arr[i].split(' ');
+        console.log(arr)
+        for(var j=0;j<newArr.length;j++){
+            if(newArr[j].match(/[a-zA-Z]/)){
+               tempCount++                  
+            }
+        }
+        if(tempCount > count){
+            count = tempCount; 
+            tempCount=0;
+        } else {
+            tempCount = 0;
+        }
+    }
+    return count;
+}
+
+// Word count in multiple sentances
+
+function solution(S) {
+    var arr = S.split(/[?\.!]/)
+    arr = arr.map(function(e){
+        return e.trim()
+    })
+    console.log(arr)
+    var count = 0;
+    var tempCount=0;
+    console.log(arr)
+    for(var i=0;i<arr.length;i++){
+        var newArr = arr[i].split(' ');
+        console.log(arr)
+        for(var j=0;j<newArr.length;j++){
+            if(newArr[j].match(/[a-zA-Z]/)){
+               tempCount++                  
+            }
+        }
+        if(tempCount > count){
+            count = tempCount; 
+            tempCount=0;
+        } else {
+            tempCount = 0;
+        }
+    }
+    return count;
+}
+
