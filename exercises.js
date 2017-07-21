@@ -2000,3 +2000,44 @@ function arrUnique (arr) {
     return holder;
 }
 
+// Can a binary tree be built?
+
+function TreeConstructor(strArr) {
+    //remove spaces from input (one of the tests had bad input)
+    strArr = strArr.map(val => val.replace(/s/g, ''));
+
+    let regExChildPattern = /((d+),d+)/
+    let regExParentPattern = /(d+,(d+))/
+
+    let children = strArr.map(val => regExChildPattern.exec(val)[1]);
+    let parents = strArr.map(val => regExParentPattern.exec(val)[1]);
+
+    //check to make sure all children are unique
+    let childSet = new Set(children);
+    if (children.length !== childSet.size) {
+        return false;
+    }
+
+    //test whether any parent node has more than 2 children
+    let parentObj = {};
+    parents.forEach(val => {
+        if (!parentObj[val]) {
+            parentObj[val] = 1;
+        } else {
+            parentObj[val]++;
+        }
+    })
+    for (let myKey in parentObj) {
+        if (parentObj[myKey] > 2) return false;
+    }
+
+    //make certain there is one, and only one, top dog
+    let uniqParents = Array.from(new Set(parents))
+
+    let topDogs = uniqParents.filter(val => !children.includes(val));
+    if (topDogs.length !== 1) return false;
+
+    return true;
+
+}
+
