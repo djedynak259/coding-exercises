@@ -1907,3 +1907,96 @@ function BitmapHoles(strArr) {
   return maxCount; 
          
 }
+
+// Switch sort 
+
+//Just for fun, I added this method to the Array prototype.
+if (!Array.prototype.equalArr) {
+    Array.prototype.equalArr = function(arr) {
+        var res = true;
+        if (this.length !== arr.length) return false;
+
+        this.forEach((val, ind) => {
+            if (val !== arr[ind]) res = false;
+        });
+        return res;
+    }
+}
+
+function SwitchSort(arr) {
+    var sortArr = arr.slice().sort((a, b) => a - b);
+    var running = true;
+    if (sortArr.equalArr(arr)) return 0;
+    var counter = 0;
+    var arrCopy = arr.slice()
+    var arrayGroup = [arr.slice()]
+
+    while(running < 10) {
+        counter++;
+        var newArrayGroup = [];
+        arrayGroup.forEach(function(val) {
+            newArrayGroup.push(...arrayExpand(val));
+        });
+        var slimArrGroup = arrUnique(newArrayGroup);
+        if (slimArrGroup.some( val => {return val.equalArr(sortArr)})) return counter;
+
+        arrayGroup = slimArrGroup;
+
+        //not really necessary, but just to prevent an open while loop while working
+        running++;
+    }
+}
+
+//-------helpers-----------
+
+//This method returns a correct modulo value for negative numbers
+function truMod(piece, length) {
+    if (piece >= 0) {
+        return piece % length;
+    } else {
+        return (piece % length) + length;
+    }
+}
+
+//This takes an array and expands it backwards to give all possibilities
+function arrayExpand(arr) {
+    var len = arr.length
+    var holdArr = [];
+    arr.forEach(function(val, ind) {
+        if (val === len) {
+
+        } else {
+            //shift1 and shift2 are the indices of the switch
+            var shift1 = truMod(ind + val, len);
+            var shift2 = truMod(ind - val, len);
+            var arr1 = arraySwitch(arr, shift1, ind);
+            var arr2 = arraySwitch(arr, shift2, ind);
+            holdArr.push(arr1);
+            holdArr.push(arr2);
+        }
+    })
+    return (holdArr);
+}
+
+//This method performs the actual composition of the new array
+function arraySwitch(arr, pos1, pos2) {
+    var newArr = arr.slice();
+    var val1 = arr[pos1];
+    var val2 = arr[pos2];
+    newArr.splice(pos1, 1, val2);
+    newArr.splice(pos2, 1, val1);
+    return newArr;
+}
+
+function arrUnique (arr) {
+    var len = arr.length;
+    var holder = [];
+    for (var i = 0; i < len; i++) {
+        var res = holder.some(val => val.equalArr(arr[i]));
+        if (!res) {
+            holder.push(arr[i]);
+        }
+    }
+    return holder;
+}
+
