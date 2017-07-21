@@ -2041,3 +2041,39 @@ function TreeConstructor(strArr) {
 
 }
 
+// Form Hamilton path?
+
+function HamiltonianPath(strArr) {
+
+    connectionArray = strArr[1].slice(1, -1).split(",");
+
+    connectionArray = connectionArray.map(function(val) {
+        val = val.trim();
+        holder = val.split('').reverse().join('');
+        return [val, holder];
+    });
+
+    connectionArray = connectionArray.reduce(function(init, fin) {
+        return init.concat(fin)
+    });
+
+    pathArray = strArr[2].slice(1, -1).split(',');
+    pathArray = pathArray.map(function(val){
+        return val.trim();
+    })
+
+    var holder = pathArray[0];
+    for (var i = 0, len = pathArray.length; i < len - 1; i++) {
+        var nextStep = pathArray[i] + '-' + pathArray[i + 1];
+        if (connectionArray.indexOf(nextStep) != -1) {
+            holder = pathArray[i + 1];
+            if (holder === pathArray[len - 1]){
+                return 'yes';
+            }
+        }
+        else {
+            return holder;
+        }
+    }
+}
+
