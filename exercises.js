@@ -2105,3 +2105,9 @@ function solution(A) {
     return -1
 }
 
+// Squares between numbers
+
+function solution(a,b) {
+    return Math.ceil(Math.sqrt(Math.abs(b))) - Math.floor(Math.sqrt(Math.abs(a)))
+}
+
