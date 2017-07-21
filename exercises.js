@@ -2087,7 +2087,7 @@ function solution(A) {
     var count = 0;    
     var i =0;
     console.log(low,high)
-    if(high === low + 1231231){
+    if(high === low){
         return i;
     } 
     for(var i =0;i < A.length-1;i++){ 
