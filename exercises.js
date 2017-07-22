@@ -2141,27 +2141,44 @@ function solution(S) {
 // Word count in multiple sentances
 
 function solution(S) {
-    var arr = S.split(/[?\.!]/)
+    var arr = S.split(/[?\.!]/);
     arr = arr.map(function(e){
         return e.trim()
-    })
-    console.log(arr)
+    });
     var count = 0;
     var tempCount=0;
     console.log(arr)
+    
     for(var i=0;i<arr.length;i++){
-        var newArr = arr[i].split(' ');
-        console.log(arr)
-        for(var j=0;j<newArr.length;j++){
-            if(newArr[j].match(/[a-zA-Z]/)){
-               tempCount++                  
-            }
-        }
+       var temp = arr[i].replace(/[ ]{2,}/gi," ")  
+        tempCount = temp.split(' ').length;
         if(tempCount > count){
-            count = tempCount; 
+            count = tempCount  
+         }
+    }
+    return count;
+}
+
+// word count sentance max faster code
+
+function solution(S) {
+    var tempCount=0;
+    var count=0;
+    var flag = true;
+    for(var i =0; i<S.length;i++){
+        if(S[i].match(/\w/)){
+           if(flag === true){
+              tempCount++
+              flag = false;
+           }
+        }
+        if(S[i].match(/\s/)){
+           flag= true;
+        }
+        if(S[i].match(/[\.!\?]/)){
+            count = tempCount>count ? tempCount:count;
             tempCount=0;
-        } else {
-            tempCount = 0;
+            flag = true;
         }
     }
     return count;
