@@ -2183,4 +2183,3 @@ function solution(S) {
     }
     return count;
 }
-
