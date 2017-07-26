@@ -2183,3 +2183,34 @@ function solution(S) {
     }
     return count;
 }
+
+// Snail array
+
+snail = function(array) {
+  var arr = [];
+  
+  while (array.length > 0) {
+    arr.push(...array[0])
+    array.splice(0,1)
+    for(var i=0; i<array.length;i++){
+        arr.push(array[i][array[i].length-1])
+        array[i].splice(array[i].length-1,1)
+    }
+    for(var i=array.length-1;i>=0;i--){
+      arr.push(array[array.length-1][i])
+      array[array.length-1].splice(i,1)
+    }
+    
+    array.splice(array.length-1,1)
+    
+    for(var i=array.length-1;i>0;i--){
+      arr.push(array[i][0])
+      array[i].splice(0,1)
+    }
+    console.log(arr)
+    console.log(array)
+  }
+  return arr
+}
+
+
