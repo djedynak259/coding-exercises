@@ -2257,4 +2257,26 @@ function validBraces(braces){
   return stack.length === 0; // any unclosed braces left?
 }
 
+// Snail alternate with reverse twist
+
+function snail(array) {  
+  var results = [];
+  
+  while(array.length > 0) {
+    results = results.concat(array.shift());
+    
+    array.forEach(function (current) {
+      results.push(current.pop());
+    });
+    
+    array.forEach(function (current) {
+      current.reverse();
+    });
+    
+    array.reverse();
+  }
+  
+  return results;
+}
+
 
