@@ -2213,4 +2213,26 @@ snail = function(array) {
   return arr
 }
 
+// check for closures
+
+function validBraces(braces){
+  var stack = [];
+  for(var i=0;i<braces.length;i++){
+    if(stack.length === 0 && (braces[i]===')' || braces[i]===']' || braces[i]==='}')){
+      return false
+    }
+    if(braces[i]==='(' || braces[i]==='{' || braces[i]==='['){
+      stack.unshift(braces[i])
+    }
+    else if(braces[i] === ')' && braces.charCodeAt(i) === stack[0].charCodeAt(0)+1){
+      stack.shift()
+    }
+    else if(braces[i] !== ')' && braces.charCodeAt(i) === stack[0].charCodeAt(0)+2){
+      stack.shift()
+    }    
+    else return false
+  }
+  return stack.length === 0 ? true : false
+}
+
 
