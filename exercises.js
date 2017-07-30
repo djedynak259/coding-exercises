@@ -2279,3 +2279,17 @@ function snail(array) {
   return results;
 }
 
+// Pig Latin translator
+
+function pigIt(str){
+  var arr = str.split(' ')
+  arr = arr.map(e=>{
+    e = e.split('')
+    e.push(e.shift())
+    e = e.join('')
+    e = e + `ay`
+    return e
+  })
+  return arr.join(' ')
+}
+
