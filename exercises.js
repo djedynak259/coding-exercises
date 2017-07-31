@@ -2373,4 +2373,3 @@ function loop_size(node){
   
   return loopSize;
 };
-
