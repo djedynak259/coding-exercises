@@ -2346,3 +2346,31 @@ function solution(roman)
   return sum;
 }
 
+// Find length of loop in linked list
+
+function loop_size(node){
+  var p1=node, p2=node;
+  var loopSize = 1;
+  var loop = false;
+
+  while (p2.next.next) {
+    p1 = p1.next;
+    p2 = p2.next.next;
+
+    if (p1 === p2) {
+      loop=true;
+      break;
+    }
+  }
+    
+  if(loop=true){
+    p2 = p2.next;
+    while (p1 !== p2) {
+      loopSize++;
+      p2 = p2.next;
+    }
+  }
+  
+  return loopSize;
+};
+
