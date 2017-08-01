@@ -2467,3 +2467,70 @@ function findDuplicates(data) {
 }
 
 
+// Is num Prime, faster code
+
+function isPrime(n){
+  var divisor = 3, 
+      limit = Math.sqrt(n);
+  
+  //check simple cases
+  if (n == 2 || n == 3)
+     return true;
+  if (n % 2 == 0)
+     return false;
+
+  while (divisor <= limit)
+  {
+    if (n % divisor == 0)
+      return false;
+    else
+      divisor += 2;
+  }
+  return true;
+}
+
+
+// Find Prime factors
+
+function primeFactors(n){
+  var factors = [], 
+      divisor = 3;
+  
+  while(n>2){
+    if(n % divisor == 0){
+       factors.push(divisor); 
+       n= n/ divisor;
+    }
+    else{
+      divisor =+2;
+    }     
+  }
+  return factors;
+}
+
+
+// Find nth fibonacci number
+
+function fibonacci(n){
+  var fibo = [0, 1];
+  
+  if (n <= 2) return 1;
+
+  for (var i = 2; i <=n; i++ ){
+   fibo[i] = fibo[i-1]+fibo[i-2];
+  }
+
+ return fibo[n];
+} 
+
+
+// Nth Fibonacci number recursive
+
+function fibonacci(n){
+  if(n<=1)
+    return n;
+  else
+    return fibonacci(n-1) + fibonacci (n-2);  
+}
+
+
