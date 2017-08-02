@@ -2921,4 +2921,26 @@ function sumStrings(a,b) {
   return (Number(arr1[0]) + Number(arr1[1])).toString();
 }
 
+// Arrange string, seating arrangement to not have two characters in a row
+
+function arrangeSeating( string ){
+  var h = {}, res = '', ch = '';
+  string.split('').forEach(ch => {
+  return h[ch] = (h[ch]||0) + 1});
+  console.log(h)
+  var abc = Object.keys(h);
+  
+  // take next from largest group with different language
+  while (res.length < string.length){
+//   console.log(abc)
+    abc = abc.filter(x => h[x]).sort((x, y) => h[y] - h[x]);
+    console.log(abc)
+    ch = abc[0] == ch ? abc[1] : abc[0];
+    if (!ch) return false;
+    res += ch;
+    h[ch] -= 1;
+  }
+  return res;
+}
+
 
