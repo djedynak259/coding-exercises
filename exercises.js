@@ -2534,3 +2534,22 @@ function fibonacci(n){
 }
 
 
+// Paranthesis closure checker
+
+function validParentheses(parens){
+  var count = 0;
+  console.log(parens)
+  for(var i=0;i<parens.length;i++){
+    if(parens[i] == ')' && count ==0){
+      return false
+    }  
+    if(parens[i] === ')'){
+      count++
+    }
+    if(parens[i] === '('){
+      count--
+    }
+  }
+  return count == 0 ? true : false
+}
+
