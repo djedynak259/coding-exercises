@@ -2701,7 +2701,7 @@ class BST {
   findMin() {
     let current = this.root;
     while (current.left !== null) {
-      current = current.left;
+      current = current.left; 
     }
     return current.data;
   }
@@ -2894,3 +2894,31 @@ console.log('preOrder: ' + bst.preOrder());
 console.log('postOrder: ' + bst.postOrder());
 
 console.log('levelOrder: ' + bst.levelOrder());
+
+
+// string adder in progress
+
+function sumStrings(a,b) { 
+  var arr1 = [...arguments]
+  arr1.forEach((sum)=>{
+    if (Math.abs(sum) < 1.0) {
+      var e = parseInt(sum.toString().split('e-')[1]);
+      if (e) {
+          sum *= Math.pow(10,e-1);
+          sum = '0.' + (new Array(e)).join('0') + sum.toString().substring(2);
+      }
+    } else {
+      var e = parseInt(sum.toString().split('+')[1]);
+      if (e > 20) {
+          e -= 20;
+          sum /= Math.pow(10,e);
+          sum += (new Array(e+1)).join('0');
+      }
+    }
+    })
+    console.log(arr1)
+  console.log((Number(arr1[0]) + Number(arr1[1])).toString())
+  return (Number(arr1[0]) + Number(arr1[1])).toString();
+}
+
+
