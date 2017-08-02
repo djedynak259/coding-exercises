@@ -2553,3 +2553,36 @@ function validParentheses(parens){
   return count == 0 ? true : false
 }
 
+
+// BUILD BINARY SEARCH TREE
+
+function BinarySearchTree() {
+    this._root = null;
+}
+
+BinarySearchTree.prototype = {
+
+    //restore constructor
+    constructor: BinarySearchTree,
+
+    add: function (value){
+    },
+
+    contains: function(value){
+    },
+
+    remove: function(value){
+    },
+
+    size: function(){
+    },
+
+    toArray: function(){
+    },
+
+    toString: function(){
+    }
+
+};
+
+
