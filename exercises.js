@@ -3048,3 +3048,36 @@ function bubble(arr){
 
 console.log(bubble([5,6,7,4,8,3,5,6,7,10,4]))
 
+
+//Merged Meetings
+
+function myFunction(meetings) {
+  var meetingsCopy = JSON.parse(JSON.stringify(meetings));
+  var sortedMeeting = meetingsCopy.slice().sort((a,b)=>{
+      return a.startTime > b.startTime ? 1:-1
+  })
+  
+  var mergedMeetings = [sortedMeeting[0]];
+    
+  for(let i =1;i<sortedMeeting.length;i++){
+    var currentMeeting = sortedMeeting[i];
+    var lastMergedMeeting = mergedMeetings[mergedMeetings.length-1];
+    
+      if(currentMeeting.startTime <=lastMergedMeeting.endTime){
+        lastMergedMeeting.endTime = Math.max(currentMeeting.endTime, lastMergedMeeting.endTime)   
+      } else {
+        mergedMeetings.push(currentMeeting)
+      }
+  }
+  return mergedMeetings
+}
+
+console.log(myFunction(  [
+    {startTime: 0,  endTime: 1},
+    {startTime: 3,  endTime: 5},
+    {startTime: 4,  endTime: 8},
+    {startTime: 10, endTime: 12},
+    {startTime: 9,  endTime: 10},
+]));
+
+
