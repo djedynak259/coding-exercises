@@ -3006,3 +3006,24 @@ function myFunction(arg) {
     return maxProfit
 }
 
+
+// Highest product of 3 in array
+
+function myFunction(arg) {
+    
+    var product3 = arg[0]*arg[1]*arg[2];
+    var product2high = arg[0]*arg[1];
+    var product2low = arg[0]*arg[1];
+    var highest = Math.max(arg[0],arg[1]);
+    var lowest = Math.min(arg[0],arg[1]);
+    
+    for(let i=2;i<arg.length;i++){
+        highest = Math.max(highest,arg[i]);
+        lowest = Math.min(lowest,arg[i]);
+        product3 = Math.max(product3,product2high*arg[i],product2low*arg[i])
+        product2high = Math.max(product2high,highest*arg[i]);
+        product2low = Math.min(product2low,lowest*arg[i]);
+    }
+    return product3
+}
+
