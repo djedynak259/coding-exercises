@@ -2992,3 +2992,17 @@ function myFunction(arr) {
 
 console.log(myFunction([1, 7, 3, 4]));
 
+
+// Profit calculator for apple stock
+
+function myFunction(arg) {
+  let maxProfit = arg[1]-arg[0];
+    let minPrice=arg[0];
+    for(let i=2;i<arg.length;i++){
+        let currentProfit = arg[i] - minPrice
+        maxProfit = Math.max(maxProfit,currentProfit)
+    minPrice = Math.min(minPrice,arg[i]);
+    }
+    return maxProfit
+}
+
