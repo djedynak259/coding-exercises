@@ -2979,13 +2979,13 @@ function myFunction(arr) {
   var productArr = [];
     var product = 1;
     for(let i=0;i<arr.length;i++){
-        productArr[i] = product;
-    product *=arr[i];
+      productArr[i] = product;
+      product *=arr[i];
     }
     product=1
     for(let i=arr.length-1;i>=0;i--){
-        productArr[i] *= product;
-    product *=arr[i];
+      productArr[i] *= product;
+      product *=arr[i];
     }
     return productArr;
 }
