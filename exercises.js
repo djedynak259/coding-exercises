@@ -2944,7 +2944,7 @@ function arrangeSeating( string ){
 }
 
 
-// CHeck if binary search tree
+// Check if binary search tree
 
 function isBinarySearchTree(treeRoot, lowerBound, upperBound) {
 
@@ -2962,4 +2962,14 @@ function isBinarySearchTree(treeRoot, lowerBound, upperBound) {
 
 }
 
+// find the products in array for all of array besides index
+
+function myFunction(arr) {
+  var result=[];
+    for(let i=0;i<arr.length;i++){
+        let temp = arr.filter(e=>e!=arr[i]).reduce((a,b)=>a*b)
+        result.push(temp)
+    }
+    return result
+}
 
