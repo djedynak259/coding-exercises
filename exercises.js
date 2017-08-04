@@ -3081,3 +3081,43 @@ console.log(myFunction(  [
 ]));
 
 
+
+// Recursion to find number of ways to make change
+
+class Change {
+  constructor(){
+      this.memo = {};
+    }
+    
+    myFunction(amountLeft, denominations, currentIndex) {
+        currentIndex = typeof currentIndex == 'undefined' ? 0 : currentIndex;
+        
+        var memoKey = [amountLeft,currentIndex].join(', ');
+        if(this.memo.hasOwnProperty(memoKey)){
+           console.log(`grabing memo [${memoKey}]`);
+           return this.memo[memoKey]
+        }
+        
+        if(amountLeft === 0) return 1
+        if(amountLeft < 0) return 0
+        if(currentIndex === denominations.length) return 0
+        console.log(`checking was to make ${amountLeft} with [${denominations.slice(currentIndex).join(', ')}]`)   
+        var currentCoin = denominations[currentIndex]
+        var numPossibilities =0;
+
+        while (amountLeft >= 0){
+            numPossibilities +=this.myFunction(amountLeft, denominations, currentIndex +1)
+            amountLeft -= currentCoin;
+        }
+        
+        this.memo[memoKey] = numPossibilities;
+        return numPossibilities
+    }
+    
+}
+
+// run your function through some test cases here
+// remember: debugging is half the battle!
+console.log(new Change().myFunction(4, [1,2,3]));
+
+
