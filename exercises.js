@@ -3134,7 +3134,7 @@ function josephusSurvivor(n,k){
 }
 
 
-// Class for temp tracker and methods
+// Class for temp tracker, just in time approach
 
 class TempTracker {
     constructor(){
@@ -3174,6 +3174,60 @@ class TempTracker {
             } else return this.temps[i];
         }
         return 'no mode'
+    }    
+}
+
+var arr = new TempTracker()
+arr.insert(3)
+arr.insert(6)
+arr.insert(2)
+arr.insert(2)
+console.log(arr.getMode());
+
+// Ahead of time approach to temp class
+
+class TempTracker {
+    constructor(){
+    this.totalNumber = 0;
+        this.sum = 0;
+        this.mean = null;
+        this.mode = null;
+        this.highest=null;
+        this.lowest=null;
+        this.maxOcc=0;
+        this.occurrences = [];
+        for (var i = 0; i < 111; i++) {
+            this.occurrences[i] = 0;
+        }
+    }
+
+    insert(arg) {
+        this.totalNumber++;
+        this.sum += arg;
+        this.mean = this.sum / this.totalNumber;
+        this.highest = this.lowest === null ? this.lowest = arg : arg > this.highest ? arg : this.highest;
+        this.lowest = this.highest === null ? this.highest = arg : arg < this.lowest ? arg : this.lowest;
+        this.occurrences[arg]++;
+        if(this.occurrences[arg] > this.maxOcc){
+           this.maxOcc = this.occurrences[arg]
+           this.mode = arg 
+        }
+  }
+    
+    getMax(){
+      return this.highest
+    }
+ 
+    getMin(){
+      return this.lowest
+    }
+    
+    getMean(){
+      return this.mean;
+    }
+    
+    getMode(){
+      return this.mode;
     }    
 }
 
