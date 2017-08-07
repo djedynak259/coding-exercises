@@ -3120,4 +3120,17 @@ class Change {
 // remember: debugging is half the battle!
 console.log(new Change().myFunction(4, [1,2,3]));
 
+// Remove from array every k positions
+
+function josephusSurvivor(n,k){
+  let index = 0;
+  let arr = [];
+  for(var i=1;i<n+1;i++)arr.push(i);
+  while (arr.length > 1) {
+      index = (index-1 + k) % arr.length
+      arr.splice(index,1)
+  }
+  return arr[0]
+}
+
 
