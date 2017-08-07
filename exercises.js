@@ -3290,3 +3290,27 @@ console.log(arr.getMode());
 
     return true;
 }
+
+
+// Check binary tree to see if it's binary search
+
+function myFunction(root) {
+    var queue = [{node:root,lower: -Infinity, upper: Infinity}];
+    
+    while(queue.length){
+        let nodeObj = queue.pop();
+        let node = nodeObj.node;
+        
+         if(node.value <= nodeObj.lower || node.value > = nodeObj.upper){
+                return false;
+            }         
+        
+        if(node.left){
+            queue.push({node:node.left, lower: nodeObj.lower, upper: node.value})
+        }       
+        if(node.right){
+            queue.push({node:node.right, lower: node.value ,upper:nodeObj.upper})
+        }
+  }
+}
+
