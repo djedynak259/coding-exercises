@@ -3134,3 +3134,54 @@ function josephusSurvivor(n,k){
 }
 
 
+// Class for temp tracker and methods
+
+class TempTracker {
+    constructor(){
+      this.temps = [];
+    }
+
+    insert(arg) {
+    this.temps.push(arg)
+  }
+    
+    getMax(){
+      return this.temps.reduce((a,b)=>{
+          if(b>a) return b
+            else return a
+        })
+    }
+ 
+    getMin(){
+      return this.temps.reduce((a,b)=>{
+          if(b<a) return b
+            else return a
+        })
+    }
+    
+    getMean(){
+      return this.temps.reduce((a,b)=>{
+            return a + b
+        }) / this.temps.length
+    }
+    
+    getMode(){
+        let dups = {};
+      for(var i=0;i<this.temps.length;i++){
+          if(!dups[this.temps[i]]){
+              dups[this.temps[i]] = 1
+                console.log(dups)
+            } else return this.temps[i];
+        }
+        return 'no mode'
+    }    
+}
+
+var arr = new TempTracker()
+arr.insert(3)
+arr.insert(6)
+arr.insert(2)
+arr.insert(2)
+console.log(arr.getMode());
+
+
