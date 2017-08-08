@@ -3339,4 +3339,23 @@ function secondLargest (root){
   }
 }
 
+// Aloquot sequence sum
+
+function aliquot(base, n){
+    var arr = [];
+    arr[0]=base;
+    var sum = 0;
+    for(var i = 0; i<n-1; i++){
+        for(var i = 1; i < base; i++){
+            if(base%i===0){
+                sum +=i;
+            }
+        }
+        arr.push(sum);
+        base = sum;
+        sum=0;
+    }
+    return arr;
+}
+
 
