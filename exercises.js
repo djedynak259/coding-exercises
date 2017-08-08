@@ -3314,3 +3314,29 @@ function myFunction(root) {
   }
 }
 
+
+// Binary Search Tree largest and second largest
+
+function largest(root) {
+    var current = root
+    while(current.right){
+          current = current.right
+  }
+    return current.value
+}
+
+function secondLargest (root){
+  var current = root;
+    
+    while(current){
+        if(!current.right && current.left){
+            return largest(current.left);
+        }
+    if(current.right && !current.right.right && !current.right.left){
+           return current.value
+    }
+        current = current.right;
+  }
+}
+
+
