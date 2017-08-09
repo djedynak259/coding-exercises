@@ -3443,3 +3443,32 @@ Trie.prototype.checkPresentAndAdd = function(word) {
 }
 
 
+// Binary search sorted array
+
+function myFunction(target, arr) {
+    var ceiling = arr.length;
+  var floor = -1;
+    
+  while(floor + 1 < ceiling){
+        var distance = ceiling - floor; 
+        var guessIndex = floor + Math.floor(distance/2)
+        var guess = arr[guessIndex];
+        
+        if(target === guess) return true;
+        
+        if(guess > target){
+      ceiling = guessIndex;
+        }
+        
+        else {
+          floor = guessIndex;
+        }
+        console.log(floor,ceiling)
+  } 
+    return false
+}
+
+// run your function through some test cases here
+// remember: debugging is half the battle!
+console.log(myFunction(26,[5,6,7,4,8,16,17,26,45]));
+
