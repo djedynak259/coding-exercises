@@ -3529,3 +3529,31 @@ function rotatePoint(words){
 // remember: debugging is half the battle!
 console.log(rotatePoint(words));
 
+
+// check array sum to number with O n2
+
+function myFunction(flightLength, movieLengths) {
+    for(let i=0;i<movieLengths.length;i++){
+      let first = movieLengths[i];
+        let tempArr = movieLengths.slice(0);
+        tempArr.splice(i,1)
+        console.log(first,tempArr)
+        for(let j=0;j<tempArr.length;j++){
+            console.log(tempArr[j])
+          if((flightLength - first) === tempArr[j]){
+                return true
+            }
+        }
+    tempArr=movieLengths.slice(0);
+    }
+}
+//two movie lengths = one flight length
+// flight length is given
+//for first chosen movie, check other movies to see if it matches flightLength - firstMovie length
+
+
+
+// run your function through some test cases here
+// remember: debugging is half the battle!
+console.log(myFunction(100,[40,30,20,80]));
+
