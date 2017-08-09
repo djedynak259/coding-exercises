@@ -3557,3 +3557,27 @@ function myFunction(flightLength, movieLengths) {
 // remember: debugging is half the battle!
 console.log(myFunction(100,[40,30,20,80]));
 
+
+// Check for sum of two numbers in array with set
+
+function myFunction(movieLengths, flightLength) {
+
+    // movie lengths we've seen so far
+    var movieLengthsSeen = new Set();
+   console.log(movieLengthsSeen)
+    for (var i = 0; i < movieLengths.length; i++) {
+        var firstMovieLength = movieLengths[i];
+
+        var matchingSecondMovieLength = flightLength - firstMovieLength;
+        if (movieLengthsSeen.has(matchingSecondMovieLength)) {
+            return true;
+        }
+
+        movieLengthsSeen.add(firstMovieLength);
+        console.log(movieLengthsSeen)
+    }
+
+    // we never found a match, so return false
+    return false;
+}
+console.log(myFunction([40,30,20,80],100));
