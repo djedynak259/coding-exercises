@@ -3581,3 +3581,17 @@ function myFunction(movieLengths, flightLength) {
     return false;
 }
 console.log(myFunction([40,30,20,80],100));
+
+// Javascript array deep count of indicies
+
+function deepCount(a){
+  var count=0;
+  for(let i=0;i<a.length;i++){
+    count++
+    if(typeof(a[i]) === 'object'){
+      count += deepCount(a[i]);
+    }
+  }
+  return count;
+}
+
