@@ -3472,3 +3472,60 @@ function myFunction(target, arr) {
 // remember: debugging is half the battle!
 console.log(myFunction(26,[5,6,7,4,8,16,17,26,45]));
 
+
+// Binary seach modified for alphabetical list
+
+function wordCompare(word1, word2) {
+    let length = Math.min(word1.length,word2.length);
+  for(let i=0;i<length;i++){
+        console.log(word1,word2)
+      if(word1.charCodeAt(i) > word2.charCodeAt(i)){
+          return true;
+        } else if(word1.charCodeAt(i) < word2.charCodeAt(i)){
+            return false;     
+    }     
+    }
+    return false
+}
+
+function rotatePoint(words){
+    let floorIndex = 0
+    let ceilingIndex = words.length-1;
+    let firstWord = words[0]
+    
+    while(floorIndex < ceilingIndex){
+      let distance = ceilingIndex-floorIndex;
+        let guessIndex = Math.floor(floorIndex + distance/2)
+    let guessWord = words[guessIndex]
+        
+        if(guessWord >= firstWord){
+          floorIndex = guessIndex;
+        } 
+        if(guessWord <= firstWord){
+           ceilingIndex = guessIndex;
+        }
+        if(floorIndex +1 === ceilingIndex){
+            break;
+        }
+    }
+    return ceilingIndex
+}
+
+
+  var words = [
+    'ptolemaic',
+    'retrograde',
+    'supplant',
+    'undulate',
+    'xenoepist',
+    'asymptote',
+    'babka',
+    'banoffee',
+    'engender',
+    'karpatka',
+    'othellolagkage',
+];
+// run your function through some test cases here
+// remember: debugging is half the battle!
+console.log(rotatePoint(words));
+
