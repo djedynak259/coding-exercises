@@ -3662,3 +3662,47 @@ function myFunction(arg) {
 // remember: debugging is half the battle!
 console.log(myFunction(5));
 
+
+// fill up bag with them cakes
+
+  var cakeTypes = [
+    {weight: 7, value: 160},
+    {weight: 3, value: 90},
+    {weight: 2, value: 15},
+];
+
+var capacity = 20;
+
+function myFunction(cakeTypes, capacity) {
+    let bestValue=null;
+    let bestIndex=null;
+    let value = 0;
+    while(capacity > 0){
+        for(let i=0; i<cakeTypes.length;i++){
+            if(cakeTypes[i].weight <= capacity){
+                console.log(cakeTypes[i].value / cakeTypes[i].weight)
+                let tempRatio = cakeTypes[i].value / cakeTypes[i].weight
+                if(tempRatio > bestValue){
+                   bestValue = tempRatio;
+                   bestIndex = i;
+                }   
+            }        
+        }
+        if(bestValue === null){
+           break;
+        }
+
+        console.log(bestValue)
+        while(capacity >= cakeTypes[bestIndex].weight){
+            value+=cakeTypes[bestIndex].value
+            capacity -=cakeTypes[bestIndex].weight 
+            console.log(value, capacity)
+        }
+        bestValue=null;
+        bestIndex=null;
+  }
+    return value
+}
+console.log(myFunction(cakeTypes, capacity));
+
+
