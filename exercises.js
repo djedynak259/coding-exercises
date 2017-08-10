@@ -3647,3 +3647,18 @@ function longestCollatz (inputArray) {
   return inputArray[indexLarge]
 }
 
+// nth Fibonacci number in sequence
+
+function myFunction(arg) {
+  let fibonacci = [0,1];
+    for(let i=2;i<=arg;i++){
+      let value = fibonacci[i-1] + fibonacci[i-2];
+        fibonacci.push(value);
+    }
+    return fibonacci[arg];
+}
+
+// run your function through some test cases here
+// remember: debugging is half the battle!
+console.log(myFunction(5));
+
