@@ -3595,3 +3595,29 @@ function deepCount(a){
   return count;
 }
 
+// DiNico key sorted
+
+const deNico = (key, m) => { 
+  var result = new Array(key.length);
+  var sortKey = key.split('').sort().join('')
+
+  for (var i = 0; i < key.length; i++) {
+    result[i] = [sortKey[i]];
+  }
+  var index=0;
+  for(let i=0;i<m.length;i++){
+    result[index].push(m[i]);
+    index++;
+    index = index === key.length ? 0 : index;
+  }
+  console.log(result)
+//   result.sort()
+  console.log(result)
+  result = result.map(e=>{
+    e.shift()
+    return e
+  })
+  console.log(result)
+
+}
+
