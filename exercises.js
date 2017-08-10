@@ -3595,7 +3595,7 @@ function deepCount(a){
   return count;
 }
 
-// DiNico key sorted
+// DiNico key sorted IN PROGRESS
 
 const deNico = (key, m) => { 
   var result = new Array(key.length);
@@ -3619,5 +3619,31 @@ const deNico = (key, m) => {
   })
   console.log(result)
 
+}
+
+// Collatz Sequence longest index
+
+function longestCollatz (inputArray) {
+  let indexLarge = 0;
+  let largest = 0;
+  for(let i=0;i<inputArray.length;i++){
+    let sequenceLength = 0;
+    let temp = inputArray[i];
+    while(temp > 1){
+      if(temp % 2 === 0){
+          temp = temp / 2;
+          sequenceLength++;
+      }
+      else if(temp % 2 === 1){
+          temp = 3 * temp + 1
+        sequenceLength++;
+      }
+    }
+    if(sequenceLength > largest){
+      largest = sequenceLength;
+      indexLarge = i;
+    }
+  }
+  return inputArray[indexLarge]
 }
 
