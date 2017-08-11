@@ -3705,4 +3705,85 @@ function myFunction(cakeTypes, capacity) {
 }
 console.log(myFunction(cakeTypes, capacity));
 
+// HTML interview nav bar
+
+<body>
+  <header>
+    <div class='nav'>
+      <div class='button btn1'>button1</div> 
+        <div class='dropDown1'></div>
+      <div class='button btn2'>button2</div> 
+        <div class='dropDown2'></div>
+      <div class='button btn3'>button3</div> 
+        <div class='dropDown3'></div>
+    </div> 
+  </header>
+</body>
+
+
+
+
+$(document).ready(function () {
+  $('.btn1').hover(function(){
+    $('.dropDown1').toggleClass('showHide')
+  })
+  
+  $('.btn2').hover(function(){
+    $('.dropDown2').toggleClass('showHide')
+  })
+  
+  $('.btn3').hover(function(){
+    $('.dropDown3').toggleClass('showHide')
+  })
+};
+
+.nav{
+  display:flex;
+  height:50px;
+  width:500px;
+}
+
+.button {
+  width:100px;
+  flex:0 0 auto;
+  justify-content:flex-end;
+  border:1px solid black;
+  padding: 10px;
+}
+
+.dropDown1 {
+  display:none;
+  position:absolute;
+  height:100px;
+  width:120px;
+  border:1px solid black;
+  top:58px;
+  left:8px;
+}
+
+.dropDown2 {
+  display:none;
+  position:absolute;
+  height:100px;
+  width:120px;
+  border:1px solid black;
+  top:58px;
+  left:130px;
+}
+
+.dropDown3 {
+  display:none;
+  position:absolute;
+  height:100px;
+  width:120px;
+  border:1px solid black;
+  top:58px;
+  left:252px;
+}
+
+.showHide{
+  display:block;
+}
+
+
 
