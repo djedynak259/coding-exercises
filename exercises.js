@@ -3862,3 +3862,27 @@ class queue {
     }
 }
 
+
+// find smallest integer above zero NOT in array
+
+class queue {
+    constructor(){
+      this.stack1=[];
+        this.stack2=[];
+    }
+    
+    function enqueue(arg) {
+    this.stack1.push(arg)
+    }
+
+    function dequeue(arg){
+        if(this.stack2.length === 0){
+          for(let i=0; i < this.stack1.length; i++){
+            this.stack2.push(this.stack1.pop())
+          }
+        }
+        return this.stack2.pop()
+    }
+}
+
+
