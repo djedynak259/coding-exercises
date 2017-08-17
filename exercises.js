@@ -3786,4 +3786,58 @@ $(document).ready(function () {
 }
 
 
+// Example nav with dropdown on hover, no javascript
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div {background-color: green;}
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    padding: 15px;
+    display:inline-block;
+}
+.nav {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+.nav2 {display: inline-block;}
+.nav2:hover {background: #555;}
+.nav2:hover .dropdown {display: block;}
+.dropdown {
+  position: absolute;
+  width: 200px;
+  display: none;
+}
+.dropdownBtn { 
+  background: #555; 
+  display: block; 
+}
+
+</style>
+</head>
+<body>
+
+<div>
+  <a href="#">Useless Link</a>
+  <div class='nav'>
+    <div class='nav2'>
+      <a href="#">Dropdown Link</a>
+      <div class='dropdown'>
+        <div class='dropdownBtn'><a href="#">Link 1</a></div>
+        <div class='dropdownBtn'><a href="#">Link 2</a></div>
+        <div class='dropdownBtn'><a href="#">Link 3</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+
 
