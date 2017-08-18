@@ -3886,3 +3886,26 @@ class queue {
 }
 
 
+// Find the midding drone
+
+function myFunction(arr) {
+  let obj={};
+    for(let i=0;i<arr.length;i++){
+      if(obj[arr[i]]){
+           obj[arr[i]]++
+        } else {
+          obj[arr[i]] = 1
+        }
+    }
+    for(key in obj){      
+      if(obj[key] === 1){
+           return key
+        }
+    }
+    return 'all drones returned'
+}
+
+// run your function through some test cases here
+// remember: debugging is half the battle!
+console.log(myFunction([1,1,2,3,4,5,6,7,4,5,6,3,5,4,4,5,6,6]));
+
