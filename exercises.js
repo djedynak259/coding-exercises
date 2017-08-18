@@ -3886,7 +3886,7 @@ class queue {
 }
 
 
-// Find the midding drone
+// Find the missing drone
 
 function myFunction(arr) {
   let obj={};
@@ -3908,4 +3908,30 @@ function myFunction(arr) {
 // run your function through some test cases here
 // remember: debugging is half the battle!
 console.log(myFunction([1,1,2,3,4,5,6,7,4,5,6,3,5,4,4,5,6,6]));
+
+
+// Find missing drone using a map
+
+function findUniqueDeliveryId (arr) {
+  let idMap = new Map();
+    for(let i=0;i<arr.length;i++){
+      if(idMap.has(arr[i])){
+           let newC = idMap.get(arr[i]) + 1;
+           idMap.set(arr[i],newC) 
+        } else {
+          idMap.set(arr[i],1)
+        }
+    }
+    for(var [id,count] in idMap){      
+      if(count === 1){
+           return id
+        }
+    }
+    return 'all drones returned'
+}
+
+// run your function through some test cases here
+// remember: debugging is half the battle!
+console.log(findUniqueDeliveryId ([1,1,2,3,4,5,6,7,4,5,6,3,5,4,4,5,6,6]));
+
 
