@@ -3949,3 +3949,15 @@ console.log(findUniqueDeliveryId ([1,1,2,3,4,5,6,7,4,5,6,3,5,4,4,5,6,6]));
     return uniqueDeliveryId;
 }
 
+// Delete node in single linked list
+
+function deleteNode(deleteThis) {
+  if(deleteThis.next){
+      deleteThis.value = deleteThis.next.value;
+        deleteThis.next = deleteThis.next.next
+    }
+    else{
+      throw new Error(`Can't delete the last node with this method`)
+    }
+}
+
