@@ -3993,3 +3993,21 @@ function search(){
 }
 
 
+// Reverse linked list
+
+function linkedReverse(arg) {
+  let current = arg;
+    let previous = null;
+    let next = null;
+    
+    while(current){
+      nextNode = current.next
+        current.next = previous;
+        
+        previous = current;
+        current=nextNode;
+    }
+    return previous
+}
+
+
