@@ -4011,3 +4011,19 @@ function linkedReverse(arg) {
 }
 
 
+// nth node in linked list
+
+function nthNodeLinedList(n, a) {
+  let length = 1;
+    let current = a;
+    while(current.next){
+      length ++
+        current = current.next;
+    }
+    current = a;
+    for(let i=0;i<length-n;i++){
+      current = current.next;
+    }
+    return current
+}
+
