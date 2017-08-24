@@ -4027,3 +4027,10 @@ function nthNodeLinedList(n, a) {
     return current
 }
 
+
+// Reverse and join string in place
+
+function myFunction(arg) {
+  return arg.split('').reverse().join('')
+}
+
