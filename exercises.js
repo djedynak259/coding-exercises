@@ -4135,12 +4135,6 @@ function myFunction(string) {
         }
     }
     for(value of thing.values()){
-      if(string.length % 2 === 0){
-          if(value % 2 === 1){
-              return false
-            }
-        }
-        if(string.length % 2 === 1){
            let onee  = 0;
            if(value % 2 === 1){
               onee++
@@ -4148,9 +4142,8 @@ function myFunction(string) {
             if(onee > 1){
               return false;
             }
-        }
     }
-    return true
+    return thing.size >=1
 }
 console.log(myFunction('civictttv'));
 
