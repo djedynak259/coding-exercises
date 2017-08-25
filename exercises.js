@@ -4147,3 +4147,19 @@ function myFunction(string) {
 }
 console.log(myFunction('civictttv'));
 
+// Pendrome permutations using a set instead of map
+
+function myFunction(string) {
+    let thing = new Set()
+    
+    for(let i=0;i<string.length;i++){
+      if(thing.has(string[i])){
+           thing.delete(string[i])
+        } else{
+          thing.add(string[i])
+        }
+    }
+    return thing.size <=1
+}
+console.log(myFunction('civictftdtdtftv'))
+
