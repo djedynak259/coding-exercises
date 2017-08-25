@@ -4056,3 +4056,30 @@ function myFunction(string, index) {
     
 }
 
+// Parenthesis checker of all types
+
+function myFunction(string) {
+  let stack = [];
+    for(let i =0; i<string.length;i++){
+      if(string[i].match(/[\(\{\[]/)) {
+          stack.push(string[i])
+        }else
+        if(string[i] === ')' && stack[stack.length-1] === '('){
+          stack.pop()
+        } else
+        if(string[i] === '}' && stack[stack.length-1] === '{'){
+          stack.pop()
+        } else
+        if(string[i] === ']' && stack[stack.length-1] === '['){
+          stack.pop()
+        }        
+        else {
+      console.log(stack)
+      console.log(string[i])
+      return false
+        }
+    }
+  return true
+}
+console.log(myFunction('{[(]()}'));
+
