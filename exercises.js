@@ -4120,3 +4120,37 @@ function isValid(code) {
     return openersStack.length === 0;
 }
 
+
+// Variations of palendrome using map
+
+function myFunction(string) {
+    let thing = new Map();
+  for(let i=0;i<string.length;i++){
+      if(!thing.has(string[i])){
+           thing.set(string[i],1)
+        }
+        if(thing.has(string[i])){
+           let temp = thing.get(string[1]) + 1
+           thing.set(string[i],temp)
+        }
+    }
+    for(value of thing.values()){
+      if(string.length % 2 === 0){
+          if(value % 2 === 1){
+              return false
+            }
+        }
+        if(string.length % 2 === 1){
+           let onee  = 0;
+           if(value % 2 === 1){
+              onee++
+           }
+            if(onee > 1){
+              return false;
+            }
+        }
+    }
+    return true
+}
+console.log(myFunction('civictttv'));
+
