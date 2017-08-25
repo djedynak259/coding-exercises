@@ -4163,3 +4163,76 @@ function myFunction(string) {
 }
 console.log(myFunction('civictftdtdtftv'))
 
+
+// Levis interview
+
+<body>
+  <nav>
+    <div class='title'>
+      <h1>Your title</h1>
+    </div>
+  </nav>   
+  <section class='content'>
+    <div class=articleWrap>
+      <article class='articles'>
+        <h1>Your article heading</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam ab ipsa nostrum voluptatem placeat inventore odio nam unde adipisci repudiandae est, blanditiis, fugit quidem, ipsam provident consequatur hic cupiditate eum.</p>
+      </article>
+      <article class='articles'>
+        <h2>Your article heading</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam ab ipsa nostrum voluptatem placeat inventore odio nam unde adipisci repudiandae est, blanditiis, fugit quidem, ipsam provident consequatur hic cupiditate eum.</p>
+      </article>    
+    </div>
+    <aside>
+      <h2>Something aside</h2>
+    </aside>
+  </section>
+  <footer>
+    <h2>A nice footer</h2>
+  </footer>
+</body>
+
+nav {
+  display:flex;
+  justify-content:space-between;
+  background-color:orange;
+  border-bottom:5px solid darkorange;
+}
+
+nav h1 {
+  margin: 0 0 0 30px;
+  color:white;
+  font-size: 60px;
+}
+
+.content {
+  display:flex;
+}
+
+article {
+  width:100%;
+  margin: 0 20px;
+  border-bottom: 3px solid grey; 
+}
+
+article h1 {
+  font-size: 40px;
+}
+
+article h2 {
+  font-size: 30px;
+}
+
+aside {
+  margin: 30px 20px 10px;
+  width:300px;
+  height:400px;
+  background-color:orange;
+  border: 3px solid grey;
+}
+
+footer {
+  height:80px;
+  background-color:orange;
+  color:white
+}
