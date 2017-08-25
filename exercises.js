@@ -4035,3 +4035,24 @@ function myFunction(arg) {
 }
 
 
+// Find closing parenthesis by index
+
+function myFunction(string, index) {
+    let parStack = [];
+    if(string.charAt(index) !== '('){
+       return 'not a ('
+    }
+    for(let i=index+1;i<string.length;i++){
+      if(string[i] === '('){
+           parStack.push(string.charAt(i))
+        }
+        if(string[i] === ')' && parStack.length === 0){
+           return string.charAt(i)
+        }
+        if(string[i] === ')' && parStack.length > 0){
+          parStack.pop();
+        }
+    }
+    
+}
+
