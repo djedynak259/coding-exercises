@@ -4264,3 +4264,29 @@ footer {
     return permutations;
 }
 
+
+// Sorted Scores in O n time
+
+function myFunction(array, top) {
+  let scoreCounts = [];
+    for(let i=0;i<=top;i++){
+      scoreCounts.push(0)
+    }
+    
+    array.forEach(e=>{
+      scoreCounts[e]++
+    })
+    
+    let sortedScores = [];
+    
+    for(let i = top;i>=0;i--){
+      let count = scoreCounts[i]
+        
+        for(let t=0;t<count;t++){
+          sortedScores.push(i)
+        }
+    }
+    console.log(sortedScores)
+    return sortedScores
+}
+
