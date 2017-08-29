@@ -4290,3 +4290,15 @@ function myFunction(array, top) {
     return sortedScores
 }
 
+
+// Consecutive numbers in array, find the double
+
+function consecutiveDouble(array) {
+  let singles = 1;
+    for(let i=2;i<=array.length;i++){
+      singles += i;
+    }
+    let sum = array.reduce((a,b)=>a+b)
+    return sum - singles
+}
+
