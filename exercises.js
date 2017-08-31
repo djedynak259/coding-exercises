@@ -3530,7 +3530,7 @@ function rotatePoint(words){
 console.log(rotatePoint(words));
 
 
-// check array sum to number with O n2
+// check array sum to number Movie Lengths Cake Interview with O n2
 
 function myFunction(flightLength, movieLengths) {
     for(let i=0;i<movieLengths.length;i++){
