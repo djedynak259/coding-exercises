@@ -4298,3 +4298,33 @@ function consecutiveDouble(array) {
     return sum - singles
 }
 
+// Ant Bridge
+
+var antBridge = function(ants, terrain) {
+  console.log(terrain)
+  console.log(ants)
+  ants = ants.split('')
+  let stack1=[];
+//   console.log(stack1)
+  for(let i=0;i<terrain.length;i++){
+    if(terrain[i] === '-' & terrain[i-1] === '.'){
+      stack1.unshift(ants.pop())
+      stack1.unshift(ants.pop())
+      console.log(stack1, '1', terrain[i])
+      ants = [...stack1, ...ants]
+      stack1=[]
+      console.log(ants, 'ants', terrain[i])
+    }  
+    else if(terrain[i] === '-' && terrain[i+1] === '.'){
+      stack1.unshift(ants.pop())
+      console.log(stack1, terrain[i]) 
+    }
+    if(terrain[i] === '.' && terrain[i+1] === '.'){
+      stack1.unshift(ants.pop())
+      console.log(stack1, terrain[i])    
+    }
+  }
+  return ants.join('')
+}
+
+
