@@ -3918,7 +3918,7 @@ function findUniqueDeliveryId (arr) {
           idMap.set(arr[i],1)
         }
     }
-    for(var [id,count] in idMap){      
+    for(var [id,count] of idMap){      
       if(count === 1){
            return id
         }
@@ -4326,4 +4326,37 @@ var antBridge = function(ants, terrain) {
   }
   return ants.join('')
 }
+
+// ascII problem
+
+function ascii_deletion_distance(str1, str2) {
+    let mapp = new Map();
+    let sum = null;
+    for(let i=0;i<str1.length; i++){
+       if(mapp.has(str1[i])){
+           let newC = mapp.get(str1[i]) + 1;
+           mapp.set(str1[i],newC) 
+        } else {
+          mapp.set(str1[i],1)
+        }
+    }
+    for(let j =0;j<str2.length;j++){
+       if(mapp.has(str2[j])){
+           let newC = mapp.get(str2[j]) + 1;
+           mapp.set(str2[j],newC) 
+        } else {
+          mapp.set(str2[j],1)
+        }        
+    }  
+
+    for(var [id,count] of mapp){    
+      if(count === 1){
+           sum += id.charCodeAt(0)
+        }
+    }    
+    return sum
+}
+
+console.log(ascii_deletion_distance('cat','at'))
+
 
