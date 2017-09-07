@@ -4327,4 +4327,3 @@ var antBridge = function(ants, terrain) {
   return ants.join('')
 }
 
-
