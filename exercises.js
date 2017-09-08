@@ -4360,4 +4360,8 @@ function ascii_deletion_distance(str1, str2) {
 console.log(ascii_deletion_distance('cat','at'))
 
 
+// one line reverse
+
+weirdReverse=a=>a.sort(c=>1)
+
 
