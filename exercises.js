@@ -4332,9 +4332,11 @@ var antBridge = function(ants, terrain) {
 function ascii_deletion_distance(str1, str2) {
     let mapp = new Map();
     let sum = null;
-    for(let i=0;i<str1.length; i++){
+    // for(let i=0;i<str1.length; i++){Test example
+
+
        if(mapp.has(str1[i])){
-           let newC = mapp.get(str1[i]) + 1;
+         let newC = mapp.get(str1[i]) + 1;
            mapp.set(str1[i],newC) 
         } else {
           mapp.set(str1[i],1)
@@ -4365,4 +4367,30 @@ console.log(ascii_deletion_distance('cat','at'))
 weirdReverse=a=>a.sort(c=>1)
 
 
+// Test example
+
+function sum(a,b){
+  return a+b
+}
+
+function runtestSum(){
+
+  function testA(arg1, arg2, expected){
+    let result = sum(arg1,arg2)
+    if(result !== expected){
+      console.log(`FAIL Expected ${expected} but got ${result}`)
+    } else {
+      console.log(`PASS  ${expected} = ${result}` )
+    }
+  }
+  
+  testA(1,2,3);
+  testA(1,3,4);
+  testA(1,9,10);
+  testA(1,3,5); 
+ 
+}
+  
+console.log(sum(2,3))
+console.log(runtestSum())
 
