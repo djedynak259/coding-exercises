@@ -4394,4 +4394,19 @@ function runtestSum(){
 console.log(sum(2,3))
 console.log(runtestSum())
 
+// Camel Case generator
+
+function toCamelCase(str){
+  let result = str.length ? str[0] : '';
+  for(let i=1;i<str.length;i++){
+    if(str[i] === '-' || str[i]==='_'){
+      result = result.concat(str[i+1].toUpperCase())
+      i++
+    }
+    else {
+      result = result.concat(str[i])
+    }    
+  }
+  return result
+}
 
