@@ -4454,4 +4454,81 @@ function sumOfDivided(lst) {
 }
 
 
+// Function Lists progress
+
+function List() {}
+
+function EmptyList() {}
+EmptyList.prototype = new List();
+EmptyList.prototype.constructor = EmptyList;
+
+EmptyList.prototype.toString = function() {return '()'};
+EmptyList.prototype.isEmpty = function() { return true };
+EmptyList.prototype.length = function() { /* implement this */ };
+EmptyList.prototype.push = function(x) {
+  let current = new ListNode()
+  current.value=x
+  current.next=this  
+  return current
+};
+EmptyList.prototype.remove = function(x) {};
+EmptyList.prototype.append = function(xs) {
+  let clone = JSON.parse(JSON.stringify(xs))
+    let current = new ListNode()
+    current.value=clone.value
+    current.next=clone.next
+    return current
+};
+
+function ListNode(value, next) { /* implement this */ }
+ListNode.prototype = new List();
+ListNode.prototype.constructor = ListNode;
+ListNode.prototype.isEmpty = function() { return false };
+
+ListNode.prototype.toString = function() {
+  let string='('
+  let node=this
+  while(node.next){
+    string+=`${node.value} `
+    node=node.next;
+  }
+  string+=`)`
+  console.log(string)
+  return string
+};
+
+ListNode.prototype.head = function() { /* implement this */ };
+ListNode.prototype.tail = function() { /* implement this */  };
+ListNode.prototype.length = function() {};
+ListNode.prototype.push = function(x) {
+  let current = new ListNode()
+  current.value=x
+  current.next=this
+  return current
+};
+ListNode.prototype.remove = function(x) {
+    let node = this
+    while(node.next){
+      if (node.next.value === x) {
+          node.value = node.value;
+          node.next  = node.next.next;
+       }  
+       node = node.next
+     }  
+  return this
+};
+
+ListNode.prototype.append = function(xs) {
+  let clone = JSON.parse(JSON.stringify(xs))
+  let node = this
+  let prev=null;
+  while(node.next){
+    prev=node
+    node=node.next
+  }
+  prev.next = node.append(clone)
+  return this
+};
+
+
 
