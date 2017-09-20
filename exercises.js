@@ -4410,3 +4410,48 @@ function toCamelCase(str){
   return result
 }
 
+// Find Prime Factors of each number in array and return the sum of occurances of each factor
+
+function isPrime (num){
+  num = Math.abs(num)
+  for(let j=2;j<=Math.max(num/2);j++){
+    if(num % j ===0 ){
+      return false
+    }
+  }
+  return true
+}
+
+function findPrimes(num){
+  let primes = [];
+  for(let j=2;j<=Math.abs(num);j++){
+    if(num % j === 0 && isPrime(j)){
+      primes.push(j)
+    }
+  }
+  return primes
+}
+
+function sumOfDivided(lst) {
+  let mapp = new Map();
+  let result = [];
+  for(let i=0;i<lst.length;i++){
+    let primes = findPrimes(lst[i])
+    primes.forEach(e=>{
+      if(mapp.has(e)){
+        let temp = mapp.get(e)
+        mapp.set(e,temp+lst[i])
+      }
+      else{
+        mapp.set(e,lst[i])
+      }
+    })
+  }
+  for([key,value] of mapp){
+    result.push([key,value])
+  }
+  return result.sort((a,b)=>a[0]-b[0])
+}
+
+
+
