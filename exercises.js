@@ -4473,7 +4473,7 @@ EmptyList.prototype.push = function(x) {
 };
 EmptyList.prototype.remove = function(x) {};
 EmptyList.prototype.append = function(xs) {
-  let clone = JSON.parse(JSON.stringify(xs))
+    var clone = Object.assign({}, xs);
     let current = new ListNode()
     current.value=clone.value
     current.next=clone.next
@@ -4519,16 +4519,29 @@ ListNode.prototype.remove = function(x) {
 };
 
 ListNode.prototype.append = function(xs) {
-  let clone = JSON.parse(JSON.stringify(xs))
-  let node = this
-  let prev=null;
-  while(node.next){
-    prev=node
-    node=node.next
-  }
-  prev.next = node.append(clone)
-  return this
-};
+    var clone = Object.assign({}, this);
+     let node = clone
+     let prev=null;
+     while(node.next){
+       prev=node
+       node=node.next
+     }
+     prev
+     prev.next = node.append(xs)
+     return clone
+   };
+
+// Code
+mt = new EmptyList();
+l1 = mt.push('c').push('b').push('a');
+l5 = mt.push('c').push('b').push('a');
+    console.log(l1)
+l2 = l1.append(l5);
+    console.log(JSON.stringify(l1))
+    console.log(JSON.stringify(l2))
+    l3 = l1.remove('b');
+    console.log(JSON.stringify(l3))
+
 
 
 
