@@ -4543,4 +4543,56 @@ l2 = l1.append(l5);
     console.log(JSON.stringify(l3))
 
 
+// Binary Search Tree Checker
+
+function BinaryTreeNode(value) {
+    this.value = value;
+    this.left  = null;
+    this.right = null;
+}
+
+BinaryTreeNode.prototype.insertLeft = function(value) {
+    this.left = new BinaryTreeNode(value);
+    return this.left;
+};
+
+BinaryTreeNode.prototype.insertRight = function(value) {
+    this.right = new BinaryTreeNode(value);
+    return this.right;
+};
+
+function checkBinarySearchTree(root) {
+  let stack = [{node:root, lower:-Infinity, upper:Infinity }] 
+    while(stack.length){
+
+    let current = stack.pop()
+    let node = current.node
+        let upper = current.upper
+        let lower = current.lower
+
+        if(node.left){
+            if(node.left.value > lower && node.left.value < node.value){
+                lower
+               stack.push({node: node.left, lower:lower, upper:node.value})
+            } else return false
+        }
+        if(node.right){
+            if(node.right.value < upper && node.right.value > node.value){
+                console.log('test')
+             stack.push({node:node.right, lower:node.value, upper:upper})     
+            } else return false
+        }
+    }
+    return true
+}
+
+let nroot = new BinaryTreeNode(15)
+let n1 = nroot.insertLeft(10)
+let n2 = nroot.insertRight(20)
+let n3 = n1.insertLeft(8)
+let n4 = n1.insertRight(12)
+nroot
+
+
+console.log(myFunction(nroot))
 
