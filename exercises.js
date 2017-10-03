@@ -4636,4 +4636,25 @@ var lengthOfLongestSubstring = function(s) {
     return max;
 };
 
+// delete node linked list nth from end
+
+var removeNthFromEnd = function(head, n) {
+    var dummy = new ListNode(0);
+    dummy.next = head;
+    var temp = dummy;
+    var i = 0;
+    while(temp !== null && i < n) {
+        temp = temp.next;
+        i++;
+    }
+    if(temp === null) return dummy.next;
+    var slow = dummy;
+    while(temp.next !== null) {
+        temp = temp.next;
+        slow = slow.next;
+    }
+    slow.next = slow.next.next;
+    return dummy.next;
+};
+
 
