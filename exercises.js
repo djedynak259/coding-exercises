@@ -4596,3 +4596,6 @@ nroot
 
 console.log(myFunction(nroot))
 
+// Substring length
+
+
