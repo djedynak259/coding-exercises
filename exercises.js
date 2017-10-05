@@ -4378,9 +4378,9 @@ function runtestSum(){
   function testA(arg1, arg2, expected){
     let result = sum(arg1,arg2)
     if(result !== expected){
-      console.log(`FAIL Expected ${expected} but got ${result}`)
+      console.log(`FAIL - Expected ${expected} but got ${result}`)
     } else {
-      console.log(`PASS  ${expected} = ${result}` )
+      console.log(`PASS - ${expected} = ${result}` )
     }
   }
   
