@@ -4658,3 +4658,22 @@ var removeNthFromEnd = function(head, n) {
 };
 
 
+// Flatten Array
+
+var input = [1, 2, [3], [4], [5, 6, [7, 8, 9]]];
+
+function flattenArray(input){
+  let result = []
+  for(let i=0;i<input.length;i++){
+    if(Array.isArray(input[i])){
+       result = result.concat(flattenArray(input[i]));
+    } else {
+       result = result.concat(input[i])
+    }
+  }
+  return result
+}
+
+console.log(flattenArray(input));
+
+
