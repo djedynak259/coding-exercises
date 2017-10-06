@@ -4676,4 +4676,58 @@ function flattenArray(input){
 
 console.log(flattenArray(input));
 
+// FLatten Array no recursion
+
+let input = [1, 2, [3], [4], [5, 6, [7, 8, 9]]];
+
+function flattenArray(input){
+  let result = []
+  let stack = input.reverse()
+    while(stack.length>0){
+    let current = stack.pop()
+    if(Array.isArray(current)){
+        current.reverse().forEach(e=>stack.push(e))
+    } else {
+        result = result.concat(current)
+    }
+      
+  }
+  return result
+}
+
+console.log(flattenArray(input));
+
+
+// Fetch API call
+
+  function createNode(element) {
+      return document.createElement(element);
+  }
+
+  function append(parent, el) {
+    return parent.appendChild(el);
+  }
+
+  const ul = document.getElementById('authors');
+  const url = 'https://randomuser.me/api/?results=10';
+  fetch(url)
+  .then((resp) => resp.json())
+  .then(function(data) {
+    let authors = data.results;
+    return authors.map(function(author) {
+      let li = createNode('li'),
+          img = createNode('img'),
+          span = createNode('span');
+      img.src = author.picture.medium;
+      span.innerHTML = `${author.name.first} ${author.name.last}`;
+      append(li, img);
+      append(li, span);
+      append(ul, li);
+    })
+  })
+  .catch(function(error) {
+    console.log(error);
+  });  
+
+  
 
