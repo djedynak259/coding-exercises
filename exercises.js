@@ -4729,5 +4729,35 @@ console.log(flattenArray(input));
     console.log(error);
   });  
 
+
+// Prime factors of number
+
+
+let input = 100
+
+function primeFactors(input){
+  let primes = []
+  for(let i=1;i<input/2;i++){
+    let count = 0
+    for(let j=2;j<i;j++){
+      if(i%j === 0){
+        count++
+      }
+    }
+    if(count === 0){
+      primes.push(i);
+    }
+  }
   
+  let factors = [];
+  for(let i=2;i<=input;i++){
+    if(input % i === 0 && primes.includes()){
+      factors.push(i)
+    }
+  }
+  return factors
+}
+
+console.log(primeFactors(input))
+
 
