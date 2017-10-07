@@ -727,6 +727,38 @@ function PrimeMover(num) {
   }         
 }
 
+// Find nth Prime better
+
+function primeNum(input){
+  let primes = [];
+  let currentNum=2
+  while(primes.length < input){
+
+    let count = 0
+    for(let j=2;j<currentNum;j++){
+      if(currentNum%j === 0){
+        count++
+      }
+    }
+    if(count === 0){
+      primes.push(currentNum);
+    }
+     currentNum++
+  }
+    return primes[primes.length-1]
+}
+
+
+function testThis(arg, expected) {
+    let result = primeNum(100)
+    if(result !== expected){
+       console.log(`FAIL - got ${result} and expected ${expected}`)
+    } else {
+       console.log(`OK!`)
+    }
+}
+testThis(100,541)
+
 // Palindrome II
 
 function PalindromeTwo(str) { 
