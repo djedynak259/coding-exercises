@@ -4791,3 +4791,31 @@ console.log(flattenArray(input));
     console.log(error);
   });  
 
+
+// Coin sum permutations
+
+console.clear()
+
+function coinPermutatons(total, coins){
+  let permutations = []
+  let stack = [{remaining:total, used:[]}]
+  while(stack.length > 0){
+    let current = stack.pop()
+
+    if(current.remaining===0){
+      permutations.push(current)
+    }
+    for(let i=0;i<coins.length;i++){
+      let temp = current.used
+      if(current.remaining >= coins[i]){
+        stack.push({remaining:current.remaining-coins[i],   used:temp.concat(coins[i])})
+      }
+    }
+    console.log(stack)
+  }
+  return permutations
+}
+
+
+console.log(coinPermutatons(4,[1,2,3]))
+
