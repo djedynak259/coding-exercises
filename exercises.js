@@ -4819,3 +4819,84 @@ function coinPermutatons(total, coins){
 
 console.log(coinPermutatons(4,[1,2,3]))
 
+// Experiemnts JSBIN #1
+
+console.clear()
+
+let obj = {
+    sound: 'wppf',
+    talk: function(){
+        console.log(this.sound)
+    }
+}
+
+obj.talk()
+
+let bind = obj.talk.bind(obj)
+
+let cally= obj.talk.call(obj)
+
+
+bind()
+
+function func() {
+    console.log('this: '+this);
+    console.log('arguments: '+Array.prototype.slice.call(arguments));
+}
+var bound = func.bind('abc', 1, 2);
+let vbound = bound
+let call = func.call('abc',1,2)
+// var notBound = func(1,2)
+
+// vbound()
+// bound()
+
+// console.log(vbound())
+// console.log(call)
+// console.log(notBound)
+
+// bound()
+
+function TestObj(){
+    this.name = 'Dragon';
+  this.gender = function(){
+    return 'males'
+  }
+}
+
+let drag = new TestObj
+TestObj.prototype.gender = function(){return 'male'};
+
+console.log(drag)
+
+console.log(drag.gender())
+
+
+var monica = {
+  name: 'Monica Geller',
+  total: 400,
+  deductMonthlyFee: function(){
+      return (fee) => {
+       this.total = this.total - fee;
+       return this.name + ' remaining balance is '+ this.total; 
+      }
+  }
+}
+
+var rachel = {name: 'Rachel Green', total: 1500};
+var rachelFeeDeductor = monica.deductMonthlyFee.bind(rachel);
+
+rachelFeeDeductor()(200); //"Rachel Green remaining balance is 1300"
+rachelFeeDeductor(); //"Rachel Green remaining balance is 1100"
+
+console.log(rachel.total)
+
+var ross = {name:'Ross Geller', total:250};
+var rossFeeDeductor = monica.deductMonthlyFee.bind(ross);
+let tester = rossFeeDeductor()(25); //"Ross Geller remaining balance is 225"
+console.log(tester); //"Ross Geller remaining balance is 200"
+
+rachelFeeDeductor(); //"Rachel Green remaining balance is 900"
+
+console.log(ross.total)
+
