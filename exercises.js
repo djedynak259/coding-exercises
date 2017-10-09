@@ -4936,3 +4936,27 @@ rachelFeeDeductor(); //"Rachel Green remaining balance is 900"
 
 console.log(ross.total)
 
+// Merge sorted arrays
+
+var myArray     = [3, 4, 6, 10, 11, 15, 22, 25, 26, 30];
+var alicesArray = [1, 5, 8, 12, 14, 19, 21];
+
+function mergeArrays(a,b){
+  let results=[]
+  let aInd=0
+  let bInd=0
+  while(results.length < a.length+b.length){
+
+    if(a[aInd]<=(b[bInd]|| Infinity)){
+      results.push(a[aInd])
+      aInd++
+    } else {
+      results.push(b[bInd])
+      bInd++
+    }
+  }
+  return results
+}
+
+console.log(mergeArrays(myArray, alicesArray));
+
