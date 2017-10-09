@@ -4960,3 +4960,35 @@ function mergeArrays(a,b){
 
 console.log(mergeArrays(myArray, alicesArray));
 
+// Egg Drop highest floor
+
+function eggDrop(a,b,highest){
+  let args = [a,b]
+  let lower = 1;
+  let upper = 100;
+  let guess = null;
+  
+  args.forEach(e=>{
+    if(e.break === true){
+      upper = Math.max(lower, e.floor)
+    } else {
+      lower = Math.min(upper, e.floor)
+    }
+  })
+
+  while(upper > lower + 1){
+    guess = Math.ceil((upper-lower) / 2) + lower    
+    if(guess===highest){
+      return guess
+    }
+    else if(guess > highest){
+      upper = guess
+    } else {
+      lower = guess
+    }
+  }
+  
+}
+
+console.log(eggDrop({break:false,floor:43}, {break:true,floor:69}, 56));
+
