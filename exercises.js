@@ -3763,6 +3763,42 @@ function myFunction(cakeTypes, capacity) {
 }
 console.log(myFunction(cakeTypes, capacity));
 
+// Cakes better
+
+
+
+  var cakeTypes = [
+    {weight: 7, value: 160},
+    {weight: 3, value: 90},
+    {weight: 2, value: 15},
+];
+
+var capacity = 20;
+
+function myFunction(cakeTypes, capacity) {
+    let cakes={}
+    let sum = 0;
+    let cakesSort = cakeTypes.sort((a,b)=>{
+        return (b.value/b.weight) - (a.value/a.weight)
+    })
+    for(let i=0;i<cakesSort.length;i++){
+        let current = cakesSort[i]
+        while(capacity >= current.weight){
+          if(cakes[current.value]){
+             cakes[current.value] ++
+            }  else {
+                cakes[current.value] = 1
+            }
+            capacity -=current.weight
+        }
+    }
+    for(let key in cakes){
+        sum +=(cakes[key] * key)
+    }
+    return cakes
+}
+console.log(myFunction(cakeTypes, capacity));
+
 // HTML interview nav bar
 
 <body>
