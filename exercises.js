@@ -4977,7 +4977,7 @@ function eggDrop(a,b,highest){
   })
 
   while(upper > lower + 1){
-    guess = Math.ceil((upper-lower) / 2) + lower    
+    guess = Math.ceil((upper-lower) / 2) + lower;    
     if(guess===highest){
       return guess
     }
@@ -4991,4 +4991,5 @@ function eggDrop(a,b,highest){
 }
 
 console.log(eggDrop({break:false,floor:43}, {break:true,floor:69}, 56));
+
 
