@@ -4996,8 +4996,9 @@ console.log(eggDrop({break:false,floor:43}, {break:true,floor:69}, 56));
 // Find median of sorted arrays
 
 
-let arr1 = [1,3,4,5,6]
-let arr2 = [2,4,7,8,9,10]
+
+let arr1 = [0,1,3,4,5,6]
+let arr2 = [0, 2,4,7,8,9,10]
 
 
 function findMedian(a,b){
@@ -5006,18 +5007,17 @@ function findMedian(a,b){
     let isEven = totalLength % 2 === 0 ? true : false
     let results = [];
     
-    console.log(b[0] == true)
     while(results[indexToFind] === undefined){
-        let toPush = (a[0] || Infinity) <= (b[0] || Infinity) ? a.shift() : b.shift()
+        let bInd = b[0] === undefined ? Infinity : b[0]
+        let aInd = a[0] === undefined ? Infinity : a[0]
+        
+        let toPush = aInd <= bInd ? a.shift() : b.shift()
         console.log(toPush)
         results.push(toPush)
         console.log(results)
     }
-    
-    return isEven ? (results[results.length-1]+results[results.length-2])/2 : results[results.length-1]
-    
+    return isEven ? (results[results.length-1]+results[results.length-2])/2 : results[results.length-1]   
 }
-
 
 console.log(findMedian(arr1,arr2))
 
