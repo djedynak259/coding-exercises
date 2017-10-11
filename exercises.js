@@ -5106,3 +5106,41 @@ var addTwoNumbers = function(l1, l2) {
   return totalList
 };
 
+// Linked List Sum less loops
+
+var addTwoNumbers = function(l1, l2) {
+  let num1 = l1;
+  let num2 = l2;
+  let totalList;
+  var node;
+    
+  let remainder = 0;
+  while(num1 !== null || num2 !== null){
+    let toAdd1 = num1 === null ? 0 : num1.val;
+    let toAdd2 = num2 === null ? 0 : num2.val;
+    let sum = toAdd1 + toAdd2 + remainder;
+    if (sum > 9){
+      sum -= 10
+      remainder = 1
+    } else {
+      remainder = 0
+    }
+      num1 = num1 === null ? null : num1.next
+      num2 = num2 === null ? null : num2.next
+    
+    if(totalList === undefined) {
+       totalList = new ListNode(sum) 
+        node = totalList
+    } else {
+        node.next = new ListNode(sum) 
+        node = node.next
+    }
+   
+  }
+  if(remainder === 1){
+      node.next = new ListNode(remainder)
+  }
+    
+  return totalList
+};
+
