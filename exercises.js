@@ -2592,7 +2592,7 @@ function primeFactors(input){
   
   let factors = [];
   for(let i=2;i<=input;i++){
-    if(input % i === 0 && primes.includes()){
+    if(input % i === 0 && primes.includes(i)){
       factors.push(i)
     }
   }
@@ -5055,4 +5055,54 @@ function findMedian(a,b){
 }
 
 console.log(findMedian(arr1,arr2))
+
+
+// two linked list addition
+
+var addTwoNumbers = function(l1, l2) {
+  let num1 = [];
+  let num2 = [];
+  let totalArr = [];
+  let totalList;
+  let node = l1;
+  
+  while(node){
+    num1.push(node.val)
+    node = node.next
+  }
+
+  node=l2
+  while(node){
+    num2.push(node.val)
+    node=node.next
+  }
+    
+  let remainder = 0;
+  while(num1.length > 0 || num2.length > 0){
+    let temp1 = num1.shift()
+    let temp2 = num2.shift()
+    let toAdd1 = temp1 === undefined ? 0 : temp1;
+    let toAdd2 = temp2 === undefined ? 0 : temp2;
+    let sum = toAdd1 + toAdd2 + remainder;
+    if (sum > 9){
+      sum -= 10
+      remainder = 1
+    } else {
+      remainder = 0
+    }
+    totalArr.unshift(sum)
+  }
+  if(remainder === 1){
+      totalArr.unshift(remainder)
+  }
+    
+  totalList = new ListNode(Number(totalArr[totalArr.length-1]));
+  node=totalList;
+  
+  for(let i=totalArr.length-2; i >= 0 ;i--){
+    node.next = new ListNode(totalArr[i])
+    node = node.next
+  }
+  return totalList
+};
 
