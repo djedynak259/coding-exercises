@@ -4919,6 +4919,38 @@ function coinPermutatons(total, coins){
 console.log(coinPermutatons(5,[1,3,5]))
 
 
+// Combination Sum, cannot use more than what is shown, no dups
+
+var combinationSum2 = function(candidates, target) {
+    let results = []
+    let numSort = candidates.sort((a,b)=>a-b)
+    let stack = [{remaining: target, numbers:[], index:0}];
+    console.log(numSort)
+    
+    while(stack.length > 0){
+        let current = stack.pop()
+        if(current.remaining === 0){
+            
+           results.push(current.numbers)
+         }
+        
+        for(let i=current.index;i<numSort.length;i++){
+            if(i > current.index && numSort[i] === numSort[i-1]){
+               continue;
+            }
+            
+            if(current.remaining >= numSort[i]){
+               stack.push({remaining: current.remaining-numSort[i], numbers:current.numbers.concat(numSort[i]), index:i+1})
+            }
+        }
+
+    }
+          
+    return results
+};
+
+
+
 // Experiemnts JSBIN #1
 
 console.clear()
