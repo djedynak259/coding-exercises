@@ -5109,10 +5109,10 @@ var addTwoNumbers = function(l1, l2) {
 // Linked List Sum less loops
 
 var addTwoNumbers = function(l1, l2) {
+  let dummy = new ListNode(0);
   let num1 = l1;
   let num2 = l2;
-  let totalList;
-  var node;
+  let node = dummy;
     
   let remainder = 0;
   while(num1 !== null || num2 !== null){
@@ -5125,22 +5125,17 @@ var addTwoNumbers = function(l1, l2) {
     } else {
       remainder = 0
     }
-      num1 = num1 === null ? null : num1.next
-      num2 = num2 === null ? null : num2.next
+    num1 = num1 === null ? null : num1.next
+    num2 = num2 === null ? null : num2.next
     
-    if(totalList === undefined) {
-       totalList = new ListNode(sum) 
-        node = totalList
-    } else {
-        node.next = new ListNode(sum) 
-        node = node.next
-    }
+    node.next = new ListNode(sum) 
+    node = node.next
    
   }
   if(remainder === 1){
       node.next = new ListNode(remainder)
   }
     
-  return totalList
-};
+  return dummy.next
+}
 
