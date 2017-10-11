@@ -4887,8 +4887,37 @@ function coinPermutatons(total, coins){
   return permutations
 }
 
-
 console.log(coinPermutatons(4,[1,2,3]))
+
+
+// change / coin sum combinations
+
+console.clear()
+
+function coinPermutatons(total, coins){
+  let permutations = []
+  let coinsSort = coins.sort((a,b)=>a-b)
+  let stack = [{remaining:total, used:[], index:0}]
+  while(stack.length > 0){
+    let current = stack.pop()
+
+    if(current.remaining===0){
+      permutations.push(current)
+    }
+    for(let i=current.index;i<coinsSort.length;i++){
+      let temp = current.used
+      if(current.remaining >= coinsSort[i]){
+        stack.push({remaining:current.remaining-coinsSort[i], used:temp.concat(coinsSort[i]), index:i})
+      }
+    }
+    console.log(stack)
+  }
+  return permutations.map(e=> e.used)
+}
+
+
+console.log(coinPermutatons(5,[1,3,5]))
+
 
 // Experiemnts JSBIN #1
 
