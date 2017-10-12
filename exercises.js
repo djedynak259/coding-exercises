@@ -810,6 +810,40 @@ function PalindromeTwo(str) {
   return match;
 }
 
+// find largest palindrome, re-arrange string
+
+var longestPalindrome = function(s) {
+    let obj = {}
+    let result = []
+    for(let i=0;i<s.length;i++){
+        if(obj[s[i]]){
+           obj[s[i]] += 1
+        } else {
+            obj[s[i]] =1 
+        }
+    }
+    
+    Object.keys(obj).forEach(e=>{
+        if(obj[e] >=2){
+           result.push(e)
+        }
+    })
+    for(let key in obj){
+        if(obj[key] % 2 === 1){
+           result.push(key)
+            break;
+        }
+    }
+    for(let i=result.length-2;i>=0;i--){
+        result = result.concat(result[i])
+
+    }
+    return result.join('')
+}; 
+
+console.log(longestPalindrome('abaccddfff'))
+
+
 // Find Greatest Common Factor
 
 function Division(num1,num2) { 
