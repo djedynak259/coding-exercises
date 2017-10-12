@@ -4966,7 +4966,6 @@ function coinPermutatons(total, coins){
   return permutations.map(e=> e.used)
 }
 
-
 console.log(coinPermutatons(5,[1,3,5]))
 
 
