@@ -844,6 +844,40 @@ var longestPalindrome = function(s) {
 console.log(longestPalindrome('abaccddfff'))
 
 
+// Longest palindrome in string no re-arranging
+
+var longestPalindrome = function(s) {
+    let stack = [];
+    let max = 0;
+    let result;
+                 
+    for(let i=1; i<s.length;i++){
+        if(s[i-1] === s[i+1]){
+            stack.push({start:i-1, end:i+1})
+            
+        }
+        if(s[i-1] === s[i]){
+            stack.push({start:i-1, end:i})
+        }
+    }
+    console.log(stack)
+    while(stack.length > 0){
+        let current = stack.pop()
+        let len = current.end - current.start +1;
+        if(len > max){
+            max = len
+            result = s.substring(current.start,current.end+1)
+        }
+        if(s[current.start-1] !== undefined && s[current.start-1] === s[current.end+1]){
+            stack.push({start:current.start-1, end:current.end+1})
+        }
+    }
+    return result ? result : s[0]
+};
+
+console.log(longestPalindrome("aaaaaaa"))
+
+
 // Find Greatest Common Factor
 
 function Division(num1,num2) { 
