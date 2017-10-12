@@ -5200,6 +5200,28 @@ var addTwoNumbers = function(l1, l2) {
   return dummy.next
 }
 
+// Linked list swap node
+
+var swapPairs = function(head) {
+    let dummy = new ListNode(0)
+    dummy.next = head
+    let prev = dummy
+    let n1 = head
+  
+    
+    while(n1 !==null && n1.next !==null){
+        let nextStart = n1.next.next
+        
+        prev.next = n1.next;
+        prev.next.next = n1
+        n1.next = nextStart;
+        
+        prev = n1
+        n1 = n1.next    
+    }
+    return dummy.next
+};
+
 
 // API Http request example
 
