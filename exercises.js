@@ -4413,6 +4413,37 @@ var permute = function(nums) {
     return results
 };
 
+console.log(permute([1,2,3]))
+
+
+// Find Unique Permutations
+
+var permuteUnique = function(numbers) {
+    let results = []
+    let nums = numbers.sort((a,b)=>a-b)
+    let stack = [{curr: [], nums: nums}]
+    while(stack.length >= 1){
+        let current = stack.pop()
+        if(current.nums.length === 0){
+           results.push(current.curr)
+        }
+        for(let i=0;i<current.nums.length;i++){
+            let end = i
+            while(end < current.nums.length && current.nums[i] === current.nums[end]) {
+                 end++;
+            }
+            
+            let newNums = current.nums.slice(0,i).concat(current.nums.slice(i+1))
+            stack.push({curr: current.curr.concat(current.nums[i]), nums: newNums})
+            i = end - 1;
+        }
+        console.log(stack)
+    }
+    return results
+};
+
+console.log(permuteUnique([1,1,3]))
+
 
 // Sorted Scores in O n time
 
