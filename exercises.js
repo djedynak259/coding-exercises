@@ -4394,6 +4394,26 @@ footer {
 }
 
 
+// Find All Permutations
+
+var permute = function(nums) {
+    let results = []
+    let stack = [{curr: [], nums: nums}]
+    while(stack.length >= 1){
+        let current = stack.pop()
+        let len = current.nums.length
+        if(len === 0){
+           results.push(current.curr)
+        }
+        for(let i=0;i<len;i++){
+            let newNums = current.nums.slice(0,i).concat(current.nums.slice(i+1))
+            stack.push({curr: current.curr.concat(current.nums[i]), nums: newNums})
+        }
+    }
+    return results
+};
+
+
 // Sorted Scores in O n time
 
 function myFunction(array, top) {
