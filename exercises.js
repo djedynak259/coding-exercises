@@ -5341,6 +5341,44 @@ var swapPairs = function(head) {
 };
 
 
+// Linked List delete node
+
+function ListNode(value) {
+    this.value= value;
+    this.next= null;
+}
+
+let deleteNodeValue = function(head, val){
+ 
+  let node = head
+  
+
+  while(node.next){
+    if(node.next.value === val){
+      console.log(node)
+      node.next = node.next.next
+      break;
+    } else {
+    node = node.next
+    }
+  } 
+}
+
+let a = new ListNode(4)
+let b = new ListNode(6)
+let c = new ListNode(8)
+let d = new ListNode(10)
+
+
+a.next = b
+b.next = c
+c.next = d
+deleteNodeValue(a,8)
+
+
+console.log(JSON.stringify(a))
+
+
 // API Http request example
 
 !function(){
