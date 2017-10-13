@@ -5453,10 +5453,7 @@ var threeSum = function(nums) {
                 }
             }
         }
-        // very important, same as line 19
-        // if(i < len - 1){ 
-        //     while(nums[i] === nums[i+1]){i++;}
-        // }
+
     }
     
     return result;
