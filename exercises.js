@@ -5550,3 +5550,14 @@ var searchRange = function(nums, target) {
 
 searchRange([5, 7, 7, 8, 8, 10],9)
 
+
+// Find Common index in array
+
+let x = [1,2,3];
+let y = [3,4,5];
+
+let findCommon = (x,y) => x.filter(e=>y.indexOf(e) < 0 ? e : null)
+findCommon(x,y)
+
+
+
