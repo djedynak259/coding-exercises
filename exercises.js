@@ -5650,10 +5650,8 @@ var letterCombinations = function(digitString) {
     
     while(stack.length > 0){
         let current = stack.pop();
-        console.log(current)
         let digit = current.digitsLeft[0]
         let reference = obj[digit] || '';
-        console.log(reference)
         if(current.digitsLeft.length === 0){
            results.push(current.output);
         }
