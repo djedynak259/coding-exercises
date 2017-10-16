@@ -5355,7 +5355,6 @@ let deleteNodeValue = function(head, val){
 
   while(node.next){
     if(node.next.value === val){
-      console.log(node)
       node.next = node.next.next
       break;
     } else {
@@ -5377,6 +5376,74 @@ deleteNodeValue(a,8)
 
 
 console.log(JSON.stringify(a))
+
+
+// Linked List add and delete example
+
+function LinkedList (){
+    this.head = null;
+}
+
+LinkedList.prototype.insertNodeAtTail = function(val) {
+    var newNode = {
+      val: val,
+      next: null
+    };
+
+    if (!this.head) {
+      this.head = newNode;
+    } else {
+      let node = this.head;
+        while (node.next) {
+          node = node.next;
+        }
+      node.next = newNode;
+    }
+  
+}
+
+LinkedList.prototype.deleteNode = function(val) {
+
+    if (!this.head) {
+      console.log('Linked list is empty.');
+      return;
+    }
+    // if you have to delete the head
+    if (this.head.val === val) {
+      this.head = this.head.next;
+    } else {
+      var node1 = this.head;
+      while (node1.next) {
+        if (node1.next.val === val) {
+          node1.next = node1.next.next;
+          break;
+        } else {
+          node1=node1.next
+        }
+      }
+    }
+  
+}
+// Create an instance of a LinkedList class
+var L1 = new LinkedList();
+
+// Create a linked list with six elements
+L1.insertNodeAtTail(5);
+L1.insertNodeAtTail(6);
+L1.insertNodeAtTail(7);
+L1.insertNodeAtTail(8);
+L1.insertNodeAtTail(9);
+L1.insertNodeAtTail(10);
+
+
+// Delete a head and a tail node
+L1.deleteNode(5);
+L1.deleteNode(10);
+
+
+// Delete  an intermediate node
+L1.deleteNode(7);
+console.log(JSON.stringify(L1))
 
 
 // API Http request example
