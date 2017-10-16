@@ -5514,3 +5514,39 @@ var threeSumClosest  = function(nums,target) {
 threeSumClosest([1,1,1,-1,2,-4,-1,-1,4],8)
 
 
+// Search Range
+
+var searchRange = function(nums, target) {
+    let results = [];
+    let lowBound = -1;
+    let highBound = nums.length;
+    let firstIndex = null;
+    let secondIndex = null;
+
+    while(lowBound +1 < highBound && firstIndex === null){
+        let middle = Math.ceil((highBound - lowBound) / 2) + lowBound;
+        let middleValue = nums[middle]
+        if(middleValue === target){
+           firstIndex = middle
+           secondIndex = middle
+        }
+        else if(middleValue > target){
+            highBound = middle   
+        } else if(middleValue < target){
+            lowBound = middle
+        }
+    }
+    if(firstIndex === null){
+      return [-1,-1]
+    }
+    while(nums[firstIndex] === target){
+      firstIndex = firstIndex -1
+    }
+    while(nums[secondIndex] === target){
+      secondIndex = secondIndex+1
+    }
+    return [firstIndex+1, secondIndex-1]
+};
+
+searchRange([5, 7, 7, 8, 8, 10],9)
+
