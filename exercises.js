@@ -5627,4 +5627,42 @@ let findCommon = (x,y) => x.filter(e=>y.indexOf(e) < 0 ? e : null)
 findCommon(x,y)
 
 
+// telephone number word combination
+
+var letterCombinations = function(digitString) {
+    let digits = digitString.split('');
+    let obj = {
+        2:['a','b','c'],
+        3:['d','e','f'],
+        4:['g','h','i'],
+        5:['j','k','l'],
+        6:['m','n','o'],
+        7:['p','q','r','s'],
+        8:['t','u','v'],
+        9:['w','x','y','z']
+    }
+    let results = [];
+    let stack = [{output:'', digitsLeft:digits}];
+    
+    if(digitString.length === 0){
+        return []   
+    }
+    
+    while(stack.length > 0){
+        let current = stack.pop();
+        console.log(current)
+        let digit = current.digitsLeft[0]
+        let reference = obj[digit] || '';
+        console.log(reference)
+        if(current.digitsLeft.length === 0){
+           results.push(current.output);
+        }
+        for(let i=0; i<reference.length; i++){
+            stack.push({output:current.output + reference[i], digitsLeft:current.digitsLeft.slice(1)})
+        }
+    }
+    return results
+};
+
+
 
