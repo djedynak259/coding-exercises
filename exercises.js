@@ -5837,4 +5837,60 @@ function testMovingMean(input, n, expected){
 
 testMovingMean(arr, 3, [3,4,5,7,6])
 
+// Weighted Moving Mean
+
+function movingMean(input, n) {
+  let result = [];
+  
+  let currentSum = 0;
+  let divisor = 0
+  let removeWeight = 0;
+  for(let i=0;i<input.length;i++){
+    if(i+1 <= n){
+      divisor += (i+1)
+      currentSum += (input[i] * 3)
+      currentSum -= removeWeight
+      result.push(Number((currentSum/divisor).toFixed(3)))
+      removeWeight += input[i]
+      
+    } else{
+      currentSum +=(input[i]*3)
+      currentSum -=removeWeight
+      result.push(Number((currentSum/divisor).toFixed(3)))
+      removeWeight +=input[i]
+      removeWeight -= input[i-n]
+    }
+  }
+  console.log(result)
+  return result
+}
+
+let arr = [3,5,7,9,2]
+
+function arrayCompare(arr1,arr2){
+  if(arr1.length !== arr2.length){
+    return false
+  }
+  for(let i=0;i<arr1.length;i++){
+    if(arr1[i] !== arr2[i]){
+      return false
+    }
+  }
+  return true
+}
+
+function testMovingMean(input, n, expected){
+
+  let result = movingMean(input, n);
+
+  if(arrayCompare(result,expected)){
+    console.log('OK!')
+  } else {
+    console.log(`FAIL, got ${result} and expected ${expected}`)
+  }
+
+}
+
+testMovingMean(arr, 3, [9,7,5.667,7.667,5.167])
+
 
