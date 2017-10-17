@@ -5790,3 +5790,51 @@ console.log(b.findSecondLargest())
 console.log(JSON.stringify(b))
 
 
+// Moving Mean
+
+function movingMean(input, n) {
+  let result = [];
+  
+  let currentSum = 0;
+  for(let i=0;i<input.length;i++){
+    if(i+1 <= n){
+       currentSum +=input[i]
+      result.push(currentSum/(i+1))
+    } else{
+      currentSum = currentSum - input[i-n] + input[i]
+      result.push(currentSum/n)
+    }
+  }
+  console.log(result)
+  return result
+}
+
+let arr = [3,5,7,9,2]
+
+function arrayCompare(arr1,arr2){
+  if(arr1.length !== arr2.length){
+    return false
+  }
+  for(let i=0;i<arr1.length;i++){
+    if(arr1[i] !== arr2[i]){
+      return false
+    }
+  }
+  return true
+}
+
+function testMovingMean(input, n, expected){
+
+  let result = movingMean(input, n);
+
+  if(arrayCompare(result,expected)){
+    console.log('OK!')
+  } else {
+    console.log(`FAIL, got ${result} and expected ${expected}`)
+  }
+
+}
+
+testMovingMean(arr, 3, [3,4,5,7,6])
+
+
