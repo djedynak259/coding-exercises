@@ -5751,16 +5751,42 @@ var balanceCheck = function(root){
   return true
 }
 
+let checkLargest = function(root){
+  let current = root
+  while(current.right){
+    current = current.right
+  }
+  return current.val
+}
+
+binaryST.prototype.findSecondLargest = function(){
+  let current = this.root
+  if(!current.right){
+    return 'not enough nodes'
+  }
+  while(current.right.right){
+    current = current.right
+  }
+  if(current.right.left){
+    return checkLargest(current.right.left)
+  } else {
+    return current.val
+  } 
+
+}
+
 let b = new binaryST()
 b.push(7)
 b.push(10)
 b.push(4)
-b.push(11)
+b.push(8)
 b.push(12)
-b.push(13)
+b.push(9)
 b.push(6)
 console.log(b.check())
 console.log(balanceCheck(b.root))
+console.log(checkLargest(b.root))
+console.log(b.findSecondLargest())
 console.log(JSON.stringify(b))
 
 
