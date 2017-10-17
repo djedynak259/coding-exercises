@@ -5663,4 +5663,104 @@ var letterCombinations = function(digitString) {
 };
 
 
+// Binary BST functions
+
+let binaryST = function(){
+  this.root = null
+}
+
+let node = function(val){
+  this.val = val
+  this.left = null
+  this.right = null
+}
+
+binaryST.prototype.push = function(val){
+  let newNode = new node(val);
+  if(!this.root){
+      this.root = newNode
+      return this.root
+  } 
+  
+  let current = this.root
+  
+  while(current){
+    if(val < current.val){
+      if(!current.left){
+        current.left = newNode;
+        break;
+      } else {
+        current = current.left
+      }
+    } else if(val > current.val){
+      if(!current.right){
+        current.right = newNode
+        break;
+      } else {
+        current = current.right
+      }
+    }
+  }
+  return this.root
+}
+
+binaryST.prototype.check = function(){
+  let stack = [{val:this.root.val,lower:-Infinity,upper:Infinity}]
+  let current;
+  while(stack.length > 0){
+    current = stack.pop()
+    if(current.right){
+      if(current.right.val <= current.value){
+        return false
+      } else {
+        stack.push({val:current.right.val,lower:current.val,Upper:current.upper})
+      }
+    } else if(current.left){
+      if(current.left.val >= current.value){
+        return false
+      } else {
+        stack.push({val:current.left.val,lower:current.lower,Upper:current.val})
+      }
+    }
+  }
+  return true
+}
+
+var balanceCheck = function(root){
+  let depths = []
+  let stack = [{node:root, depth:0}]
+  let current;
+  while(stack.length > 0){
+    current = stack.pop()
+    if(!current.node.right && !current.node.left){
+      if(depths.indexOf(current.depth) < 0){
+        depths.push(current.depth)
+      }
+      if(depths.length > 2 || Math.abs(depths[0] - depths[1]) > 1){
+        return false
+      }
+    }
+    
+    if(current.node.left){
+      stack.push({node:current.node.left, depth:current.depth+1})
+    }
+    if(current.node.right){
+      stack.push({node:current.node.right, depth:current.depth+1})
+    }    
+  }
+  return true
+}
+
+let b = new binaryST()
+b.push(7)
+b.push(10)
+b.push(4)
+b.push(11)
+b.push(12)
+b.push(13)
+b.push(6)
+console.log(b.check())
+console.log(balanceCheck(b.root))
+console.log(JSON.stringify(b))
+
 
