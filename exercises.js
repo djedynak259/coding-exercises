@@ -5893,4 +5893,44 @@ function testMovingMean(input, n, expected){
 
 testMovingMean(arr, 3, [9,7,5.667,7.667,5.167])
 
+// Object Comparison
+
+function objectCompare(obj1,obj2){
+  let key1 = Object.keys(obj1);
+  let key2 = Object.keys(obj2);
+  let result = true;
+  
+  if(key1.length !== key2.length){
+    result = false
+  } 
+  
+  key1.forEach(e=>{
+    if(key2.indexOf(e) < 0){
+      console.log(e)
+      result = false
+    }
+  })
+  
+  for(key in obj1){
+    if(obj1[key] !== obj2[key]){
+      return false
+    }
+  }
+  return result;
+}
+
+
+let obj1 = {
+  prop1:'test',
+  prop:'2'
+}
+
+let obj2 = {
+  prop1:'test',
+  prop:2
+}
+
+
+console.log(objectCompare(obj1,obj2))
+
 
