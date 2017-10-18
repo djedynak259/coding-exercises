@@ -5772,6 +5772,24 @@ binaryST.prototype.findSecondLargest = function(){
 
 }
 
+binaryST.prototype.inOrderTraverse = function(){
+  let results = []
+  let stack = [{left: this.root.left, val: this.root.val, right: this.root.right}]
+  while(stack.length > 0){
+    let current = stack.pop();
+    if(current.left){
+      stack.push({left:null, val:current.val, right:current.right})
+      stack.push({left:current.left.left, val:current.left.val, right:current.left.right})
+      continue;
+    }
+    results.push(current.val)
+    if(current.right){
+      stack.push({left:current.right.left, val:current.right.val, right:current.right.right})
+    }
+  }
+  return results
+}
+
 let b = new binaryST()
 b.push(7)
 b.push(10)
@@ -5784,6 +5802,7 @@ console.log(b.check())
 console.log(balanceCheck(b.root))
 console.log(checkLargest(b.root))
 console.log(b.findSecondLargest())
+console.log(b.inOrderTraverse())
 console.log(JSON.stringify(b))
 
 
