@@ -4496,14 +4496,11 @@ var permuteUnique = function(numbers) {
            results.push(current.curr)
         }
         for(let i=0;i<current.nums.length;i++){
-            let end = i
-            while(end < current.nums.length && current.nums[i] === current.nums[end]) {
-                 end++;
+            if(i > 0 && current.nums[i] === current.nums[i-1]) {
+                 continue;
             }
-            
             let newNums = current.nums.slice(0,i).concat(current.nums.slice(i+1))
             stack.push({curr: current.curr.concat(current.nums[i]), nums: newNums})
-            i = end - 1;
         }
         console.log(stack)
     }
