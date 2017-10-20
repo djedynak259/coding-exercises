@@ -6028,10 +6028,12 @@ sumFunction(computedArray, 2 ,4)
 
 // Nurx #3 Determine card 
 
+// to finish later
+
 function determineCardType(cardNum, cardRules){
    let cardNumber = cardNum.toString();
    let len = cardNumber.length
-   console.log(len)
+
    for(key in cardRules){
       let numDigits = cardRules[key].digitLength
       let prefix = cardRules[key].prefix
@@ -6068,15 +6070,19 @@ function determineCardType(cardNum, cardRules){
 }
 
 
-function testCardChecker(cardNum, cardObj, expected){
+function testCardChecker(cardNum, cardObj, expected, test){
   let results = determineCardType(cardNum, cardObj)
   
   if(results === expected){
-    console.log('ok!')
+    console.log(`ok!, passed test - ${test}`)
   } else {
-    console.log(`fail, got ${results} and expected ${expected}`)
+    console.log(`Fail! - ${test}, got ${results} and expected ${expected}`)
   }
 }
 
-testCardChecker(6451265222222222, cardObj, 'Discover')
+testCardChecker(6551265222222222, cardObj, 'Discover', 'Discover card check prefix without range')
+testCardChecker(6451265222222222, cardObj, 'Discover', 'Discover card check prefix with range')
+testCardChecker(0, cardObj, false, `enter 0 to fail test without error`)
+testCardChecker(64512652222223434343, cardObj, false, 'too many digits entered results in false')
+
 
