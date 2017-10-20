@@ -5987,3 +5987,96 @@ function egcd(a, b) {
 
 console.log(egcd(100,60))
 
+// Nurx #1
+
+function arraySum(arr, index1, index2){
+  if(arr.length ===0){
+      console.log('array is empty')
+      return
+  }
+  let sum = 0;
+  if(arr[index1] === undefined || arr[index2] === undefined){
+    console.log('input array does not include both input indicies')
+    return undefined
+  }
+  for(let i=index1;i<=index2;i++){
+    sum += arr[i]
+  }
+  return sum
+}
+
+
+let preCompute = function (array){
+  let sumObj = {};
+  let sumSoFar = 0
+  for(let i=0;i<array.length;i++){
+    sumSoFar += array[i]
+    sumObj[i] = sumSoFar
+  }
+  return sumObj
+}
+
+let computedArray = preCompute(array)
+
+function sumFunction (obj, index1, index2){
+  let temp = index1 === 0 ? 0 : obj[index1-1]
+  return obj[index2] - temp
+}
+
+sumFunction(computedArray, 2 ,4)
+
+
+// Nurx #3 Determine card 
+
+function determineCardType(cardNum, cardRules){
+   let cardNumber = cardNum.toString();
+   let len = cardNumber.length
+   console.log(len)
+   for(key in cardRules){
+      let numDigits = cardRules[key].digitLength
+      let prefix = cardRules[key].prefix
+     if(len >= numDigits.lower && len <=numDigits.upper && checkPrefix(prefix, cardNumber)){
+        return cardRules[key].cardName
+     }
+   }
+  
+  return false
+        
+   function checkPrefix(arr, cardNumber){
+     for(let i=0;i<arr.length;i++){
+       let current = arr[i]
+       let len, cardNumberSub; 
+
+       if(typeof current === 'number'){
+         len = current.toString().length;
+         cardNumberSub = Number(cardNumber.substring(0,len))
+         if(cardNumberSub === current){
+            return true
+         }
+       } 
+       else {
+         len = current.lower.toString().length
+         cardNumberSub = Number(cardNumber.substring(0,len))
+         if(current.lower <= cardNumberSub && current.upper >= cardNumberSub){
+           return true
+         }
+       }
+     }
+     return false
+   }     
+        
+}
+
+
+function testCardChecker(cardNum, cardObj, expected){
+  let results = determineCardType(cardNum, cardObj)
+  
+  if(results === expected){
+    console.log('ok!')
+  } else {
+    console.log(`fail, got ${results} and expected ${expected}`)
+  }
+}
+
+testCardChecker(6451265222222222, cardObj, 'Discover')
+
