@@ -3693,30 +3693,27 @@ console.log(rotatePoint(words));
 
 // check array sum to number Movie Lengths Cake Interview with O n2
 
-function myFunction(flightLength, movieLengths) {
-    for(let i=0;i<movieLengths.length;i++){
-      let first = movieLengths[i];
-        let tempArr = movieLengths.slice(0);
-        tempArr.splice(i,1)
-        console.log(first,tempArr)
-        for(let j=0;j<tempArr.length;j++){
-            console.log(tempArr[j])
-          if((flightLength - first) === tempArr[j]){
-                return true
-            }
-        }
-    tempArr=movieLengths.slice(0);
+function myFunction(movieLengths, flightLength) {
+    if(movieLengths.length < 2){
+       throw new Error('must have at least two movies in movieLenths array')
     }
+    if(flightLength === 0){
+        throw new Error('flight must have time greater than 0')
+    }
+  let obj={}
+    for(let i=0;i<movieLengths.length;i++){
+        let remainingTime = flightLength - movieLengths[i]
+        if(obj[remainingTime]){
+           return true
+        }
+        else {
+          obj[movieLengths[i]] = 1
+        }
+    }
+  return false
 }
-//two movie lengths = one flight length
-// flight length is given
-//for first chosen movie, check other movies to see if it matches flightLength - firstMovie length
 
-
-
-// run your function through some test cases here
-// remember: debugging is half the battle!
-console.log(myFunction(100,[40,30,20,80]));
+console.log(myFunction([40,30,20,80],100));
 
 
 // Check for sum of two numbers in array with set
