@@ -3832,40 +3832,34 @@ console.log(myFunction(5));
 var capacity = 20;
 
 function myFunction(cakeTypes, capacity) {
-    let bestValue=null;
-    let bestIndex=null;
-    let value = 0;
-    while(capacity > 0){
-        for(let i=0; i<cakeTypes.length;i++){
-            if(cakeTypes[i].weight <= capacity){
-                console.log(cakeTypes[i].value / cakeTypes[i].weight)
-                let tempRatio = cakeTypes[i].value / cakeTypes[i].weight
-                if(tempRatio > bestValue){
-                   bestValue = tempRatio;
-                   bestIndex = i;
-                }   
-            }        
+    let totalValue=0
+    let cakeResults=[]
+    if(capacity === 0){
+        throw new Error('bag cannot hold any cakes, capacity is 0')
+    }
+    let cakeTypesSort = cakeTypes.sort((a,b)=>{
+      if(a.value / a.weight > b.value/b.weight){
+            return -1
+        } else {
+          return 1
         }
-        if(bestValue === null){
-           break;
+    })
+  for(let i=0;i<cakeTypesSort.length;i++){
+        let current = cakeTypesSort[i]
+        if(current.weight === 0){
+            return Infinity
         }
-
-        console.log(bestValue)
-        while(capacity >= cakeTypes[bestIndex].weight){
-            value+=cakeTypes[bestIndex].value
-            capacity -=cakeTypes[bestIndex].weight 
-            console.log(value, capacity)
+      while(capacity - current.weight >= 0){
+           totalValue += current.value
+            capacity -= current.weight
+            cakeResults.push(current.weight)
         }
-        bestValue=null;
-        bestIndex=null;
-  }
-    return value
+    }
+    return totalValue
 }
 console.log(myFunction(cakeTypes, capacity));
 
-// Cakes better
-
-
+// Cakes II
 
   var cakeTypes = [
     {weight: 7, value: 160},
