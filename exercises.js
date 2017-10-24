@@ -4973,20 +4973,33 @@ console.log(flattenArray(input));
 
 const url = 'https://randomuser.me/api/?results=10';
 
-fetch(url).then(response => {
-  response.json()
-  .then(data => {
-    return data.results.filter(e=>{
-      return e.gender === 'male'
-    }).map(f=>{
-      return f.name
-    })
-
-  }).then(result=>{
-    console.log(result)
-  })
+function insert(urll){
   
-})
+  return fetch(urll).then(response => {
+    response.json()
+    .then(data => {
+      return data.results.filter(e=>{
+        return e.gender === 'male'
+      }).map(f=>{
+        return f.login
+      })
+  
+    }).then(result=>{
+      console.log(result)
+    }).then(result=>{
+      console.log('test')
+    })
+    
+  }).catch((error)=>{
+    try{
+      throw new Error(error)
+    } catch(e){
+      console.log(e)
+    }
+  })
+}
+
+insert(url)
 
 
 // Coin sum permutations
