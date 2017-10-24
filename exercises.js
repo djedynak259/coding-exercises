@@ -3837,15 +3837,15 @@ function myFunction(cakeTypes, capacity) {
     if(capacity === 0){
         throw new Error('bag cannot hold any cakes, capacity is 0')
     }
-    let cakeTypesSort = cakeTypes.sort((a,b)=>{
+    cakeTypes.sort((a,b)=>{
       if(a.value / a.weight > b.value/b.weight){
             return -1
         } else {
           return 1
         }
     })
-  for(let i=0;i<cakeTypesSort.length;i++){
-        let current = cakeTypesSort[i]
+  for(let i=0;i<cakeTypes.length;i++){
+        let current = cakeTypes[i]
         if(current.weight === 0){
             return Infinity
         }
@@ -3872,11 +3872,11 @@ var capacity = 20;
 function myFunction(cakeTypes, capacity) {
     let cakes={}
     let sum = 0;
-    let cakesSort = cakeTypes.sort((a,b)=>{
+    cakeTypes.sort((a,b)=>{
         return (b.value/b.weight) - (a.value/a.weight)
     })
-    for(let i=0;i<cakesSort.length;i++){
-        let current = cakesSort[i]
+    for(let i=0;i<cakeTypes.length;i++){
+        let current = cakeTypes[i]
         while(capacity >= current.weight){
           if(cakes[current.value]){
              cakes[current.value] ++
