@@ -5477,7 +5477,7 @@ console.log(JSON.stringify(L1))
       xhr.addEventListener('load',function(){
         if(xhr.status < 400){
           succeed(xhr.responseText)
-        } else fail(new Error('reQuest failed ' + xhr.statusText))
+        } else fail(new Error('reQuest failed ' + xhr.statusText))c
       })
       xhr.addEventListener('fail', function(){
         fail(new Error('Network error'))
