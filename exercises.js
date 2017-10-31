@@ -5477,7 +5477,7 @@ console.log(JSON.stringify(L1))
       xhr.addEventListener('load',function(){
         if(xhr.status < 400){
           succeed(xhr.responseText)
-        } else fail(new Error('reQuest failed ' + xhr.statusText))c
+        } else fail(new Error('reQuest failed ' + xhr.statusText))
       })
       xhr.addEventListener('fail', function(){
         fail(new Error('Network error'))
@@ -6088,5 +6088,44 @@ testCardChecker(6551265222222222, cardObj, 'Discover', 'Discover card check pref
 testCardChecker(6451265222222222, cardObj, 'Discover', 'Discover card check prefix with range')
 testCardChecker(0, cardObj, false, `enter 0 to fail test without error`)
 testCardChecker(64512652222223434343, cardObj, false, 'too many digits entered results in false')
+
+// 2 sum
+
+var twoSum = function(nums, target) {
+    let sorted = JSON.parse(JSON.stringify(nums))
+    sorted.sort((a,b)=>a-b)
+        let k= sorted.length-1
+        let i=0
+        while(k>i){
+            if(sorted[i] + sorted[k] === target){
+                return [nums.indexOf(sorted[i]),nums.lastIndexOf(sorted[k])]
+            }
+            else if(sorted[i] + sorted[k] < target){
+                i++
+            }
+            else if(sorted[i] + sorted[k] > target){
+                k--
+            }
+        }
+    return false
+};
+
+// Group anagrams
+
+var groupAnagrams = function(strs) {
+    let hash = {}
+    let results = []
+    for(let i=0;i<strs.length;i++){
+        let key = strs[i].split('').sort((a,b)=>a>b? 1:-1).join('')
+        
+        hash[key] = hash[key] || []
+        hash[key].push(strs[i])
+    }
+    
+    for(key in hash){
+        results.push(hash[key])
+    }
+    return results
+};
 
 
