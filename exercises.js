@@ -6128,4 +6128,23 @@ var groupAnagrams = function(strs) {
     return results
 };
 
+// String prefix match in array
+
+var longestCommonPrefix = function(strs) {
+    let compare = strs[0];
+    let result = '';
+    
+    if (strs.length === 0) return ''
+
+    for(let i=0;i<strs[0].length;i++){
+        for(let j=1;j<strs.length;j++){
+           if(strs[j][i] !== compare[i]) {
+               return result
+           }
+        }
+        result += compare[i]
+    }
+    return result
+};
+
 
