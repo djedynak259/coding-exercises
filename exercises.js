@@ -6148,3 +6148,42 @@ var longestCommonPrefix = function(strs) {
 };
 
 
+// 4 Sum, no dups
+
+var fourSum = function(nums, target) {
+    nums.sort((a,b)=>a-b)
+    
+    let result = []
+    
+    if(nums.length < 4) return []
+    
+    for(let i=0;i<nums.length-2;i++){
+        for(let j=i+1;j<nums.length-2;j++){
+            let currentTwo = nums[i] + nums[j]
+            let k = j+1    
+            let h = nums.length-1
+            
+            while(k<h){
+                
+                if(currentTwo + nums[k] + nums[h] === target){
+                    result.push([nums[i], nums[j], nums[k], nums[h]])
+                }
+                if(currentTwo + nums[k] + nums[h] < target){
+                    
+                    while(nums[k] === nums[k+1]) k++
+                    k++
+                } else {
+                    while(nums[h] === nums[h-1]) h--
+                    h--
+                }
+                
+            }
+            while(nums[j] === nums[j+1]) j++
+        }
+        while(nums[i] === nums[i+1]) i++
+    }
+    
+    return result
+};
+
+
