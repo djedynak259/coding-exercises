@@ -6187,3 +6187,19 @@ var fourSum = function(nums, target) {
 };
 
 
+// CHeck to see if number is a palendrome
+
+var isPalindrome = function(x) {
+    let len = x.toString().length;
+    if(len === 1){
+       return true
+    }
+    for(let i=0;i<Math.floor(len/2);i++){
+        if(x.toString()[i] !== x.toString()[len-1-i]){
+           return false
+        }
+    }
+    return true
+};
+
+
