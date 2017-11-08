@@ -1,5 +1,3 @@
-// CODEWARS KATAS - completed by yours truely
-
 // List names from object to String
 
 function list(names){
@@ -6187,7 +6185,7 @@ var fourSum = function(nums, target) {
 };
 
 
-// CHeck to see if number is a palendrome
+// CHeck to see if number is a palindrome
 
 var isPalindrome = function(x) {
     let len = x.toString().length;
@@ -6200,6 +6198,30 @@ var isPalindrome = function(x) {
         }
     }
     return true
+};
+
+// dynamic programming, unique paths
+
+var uniquePaths = function(m, n) {
+    let mIndex, nIndex;
+    let map=[]
+    
+    for(mIndex=0;mIndex<m;mIndex++){
+        map.push([])
+    }
+    for(mIndex=0;mIndex<m;mIndex++){
+        map[mIndex][0] = 1
+    }  
+    for(nIndex=0;nIndex<n;nIndex++){
+        map[0][nIndex] = 1
+    }        
+
+    for(nIndex=1;nIndex<n;nIndex++){
+        for(mIndex=1;mIndex<m;mIndex++){
+           map[mIndex][nIndex] =  map[mIndex-1][nIndex] + map[mIndex][nIndex-1]
+        }
+    }
+    return map[m-1][n-1]
 };
 
 
