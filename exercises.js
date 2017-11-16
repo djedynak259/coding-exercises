@@ -6281,3 +6281,17 @@ var uniquePathsWithObstacles = function(obstacleGrid) {
     return obstacleGrid[obstacleGrid.length-1][obstacleGrid[0].length-1]
 };
 
+// Jump Game
+
+var canJump = function(nums) {
+    let remaining = nums[0];
+    for(let i=1;i<nums.length;i++){
+        remaining--
+        if(remaining < 0){
+            return false
+        }
+        remaining = Math.max(remaining, nums[i])
+    }
+    return true
+};
+
