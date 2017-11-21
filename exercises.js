@@ -6346,3 +6346,56 @@ var plusOne = function(digits) {
     return result.reverse()
 };
 
+// Multiplication of large numbers, input is strings
+
+var multiply = function(num1, num2) {
+    if(num1 === '0' || num2 === '0') return '0'
+    num1 = num1.split('').reverse()
+    num2 = num2.split('').reverse()
+    let resultsToAdd = [];
+    let result = []
+    num1.forEach(e=>{
+      resultsToAdd.push([])
+    })
+    let j, i, tempSum, len = 0, remainder = 0
+    for(i=0;i<num1.length;i++){
+        for(j=0;j<num2.length;j++){
+            tempSum = Number((num1[i] * num2[j]) + remainder)
+            if(tempSum > 9){
+                remainder = 0
+                remainder = Math.floor(tempSum / 10)
+                tempSum %= 10
+            } else {
+              remainder = 0
+            }
+            resultsToAdd[i][i+j] = tempSum
+        }
+        if(remainder > 0){
+            resultsToAdd[i][i+j] = remainder
+            remainder = 0
+        }
+        len = Math.max(len, resultsToAdd[i].length)
+    }
+  
+    tempSum = 0
+    for(i=0;i<len;i++){
+        for(j=0;j<resultsToAdd.length;j++){
+            tempSum += resultsToAdd[j][i] | 0
+        }
+        tempSum +=remainder
+        if(tempSum > 9){
+            remainder = 0
+            remainder = Math.floor(tempSum / 10)
+            tempSum %= 10
+        } else {
+            remainder = 0
+        }
+        result[i] = tempSum
+        tempSum = 0
+    }
+    if(remainder > 0){
+        result[i+1] = remainder
+    }
+    return result.reverse().join('')
+};
+
