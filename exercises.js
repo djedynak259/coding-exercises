@@ -6321,3 +6321,28 @@ var canJump = function(nums) {
     return true
 };
 
+// Add one to number separated by array
+
+var plusOne = function(digits) {
+    digits = digits.reverse()
+    let result = []
+    let toAdd = [1]
+    let remainder = 0
+    for(let i=0;i<digits.length;i++){
+        let newSum = digits[i] + (toAdd[i] | 0) + remainder;
+        if (newSum > 9) {
+            remainder = 0
+            newSum -= 10;
+            remainder ++
+            result.push(newSum)
+        } else {
+            result.push(newSum)
+            remainder = 0
+        }
+    }
+    if(remainder > 0){
+        result.push(remainder)
+    }
+    return result.reverse()
+};
+
