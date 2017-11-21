@@ -615,16 +615,16 @@ function ArrayAdditionI(arr) {
 
 // Prime Numbers
 
-function PrimeTime(num) { 
-  var count = 0;
-  for (var i=1; i < num;i++) {
+function isPrime(num) { 
+  for (var i=2; i <= num/2;i++) {
     if(num % i === 0) {
-      count ++
+      return false
     } 
   }
-  if(count > 1)return false
-  else return true
+  return true
 }
+
+console.log(isPrime(12))
 
 // Run Length
 
@@ -2639,32 +2639,58 @@ function primeFactors(n){
 
 // Prime factors of number
 
-
 let input = 100
 
 function primeFactors(input){
-  let primes = []
-  for(let i=1;i<input/2;i++){
-    let count = 0
+  let primes = [];
+  for(let i=2;i<input/2;i++){
+    let count = 0;
     for(let j=2;j<i;j++){
       if(i%j === 0){
         count++
       }
     }
     if(count === 0){
-      primes.push(i);
+      primes.push(i)
     }
   }
+  return primes.filter(e=>{
+    return input % e === 0
+  })
+}
+
+console.log(primeFactors(input))
+
+
+// Prime factors using isPrime function
+
+let input = 100
+
+function primeFactors(input){
   
   let factors = [];
-  for(let i=2;i<=input;i++){
-    if(input % i === 0 && primes.includes(i)){
-      factors.push(i)
+  
+  function isPrime(num) { 
+    for (var i=2; i <= num/2;i++) {
+      if(num % i === 0) {
+        return false
+      } 
+    }
+    return true
+  }
+  
+  if(input % 2 === 0){
+    factors.push(2)
+  }
+  
+  for(let i=3;i<input/2;i=i+2){
+    if(input % i === 0 && isPrime(i)){
+        factors.push(i)
     }
   }
   return factors
 }
-
+  
 console.log(primeFactors(input))
 
 
