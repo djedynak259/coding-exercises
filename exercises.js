@@ -6422,3 +6422,29 @@ var searchInsert = function(nums, target) {
     
 };
 
+// First Bad Version
+
+var solution = function(isBadVersion) {
+    /**
+     * @param {integer} n Total versions
+     * @return {integer} The first bad version
+     */
+    return function(n) {
+        let upper = n;
+        let lower = 1;
+        let check, badVersionCall, lastTruel
+        while(upper >= lower){
+            check = Math.floor((upper - lower) / 2) + lower
+            badVersionCall = isBadVersion(check)
+            if(badVersionCall === true){
+                lastTrue = check
+                upper = check - 1       
+            } else {
+                lower = check + 1
+            }
+        }
+        return lastTrue
+        
+    };
+};
+
