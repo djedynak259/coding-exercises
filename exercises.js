@@ -6399,3 +6399,26 @@ var multiply = function(num1, num2) {
     return result.reverse().join('')
 };
 
+// Search Input Position
+
+var searchInsert = function(nums, target) {
+    let upperIndex = nums.length-1;
+    let lowerIndex = 0
+    let middleIndex;
+    
+    while(upperIndex >= lowerIndex){
+        middleIndex = Math.floor((upperIndex - lowerIndex) / 2) + lowerIndex
+        
+        if(nums[middleIndex] === target) {
+            return middleIndex;
+        }
+        if(nums[middleIndex] < target) {
+            lowerIndex = middleIndex + 1
+        } else {
+            upperIndex = middleIndex - 1
+        }
+    }
+    return lowerIndex
+    
+};
+
