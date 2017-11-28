@@ -6448,3 +6448,32 @@ var solution = function(isBadVersion) {
     };
 };
 
+// Parenthesis validator new
+
+var isValid = function(s) {
+    let obj={
+        '(' : ')',
+        '[' : ']',
+        '{' : '}'
+    }
+    let characters = s.split('');
+    let stack = [];
+    for(let i=0;i<characters.length;i++){
+        if(characters[i] === '(' || characters[i] === '{' || characters[i] === '['){
+            stack.unshift(characters[i])   
+        } else {
+            for(key in obj){
+                if(characters[i] === obj[key]){
+                    if(stack[0] === key){
+                        stack.shift()    
+                    } else {
+                        return false    
+                    }
+                    
+                }
+            }
+        }   
+    }
+    return stack.length ? false : true
+};
+
