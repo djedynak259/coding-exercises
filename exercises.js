@@ -6467,7 +6467,7 @@ var isValid = function(s) {
                     if(stack[0] === key){
                         stack.shift()    
                     } else {
-                        return false    
+                        return false
                     }
                     
                 }
