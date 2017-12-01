@@ -1255,8 +1255,6 @@ function twoSum(arr, S) {
     // calculate S - current element
     var sumMinusElement = S - arr[i];
 
-    // check if this number exists in hash table
-    // if so then we found a pair of numbers that sum to S
     if (hashTable[sumMinusElement.toString()] !== undefined) { 
       sums.push([arr[i], sumMinusElement]);
     }
@@ -6134,6 +6132,26 @@ var twoSum = function(nums, target) {
     return false
 };
 
+
+// 2 sum faster without sort
+
+const arr = [1,3,5,6,3,4,7]
+
+let Twosum = (arr, sum) => {
+  let set = new Set()
+  for(let i=0;i<arr.length;i++){
+    let match = sum - arr[i];
+    if(set.has(match)){
+      return true
+    } else if (!set.has(arr[i])){
+      set.add(arr[i])
+    } 
+  }
+  return false
+}
+
+console.log(Twosum(arr, 4))
+
 // Group anagrams
 
 var groupAnagrams = function(strs) {
@@ -6476,4 +6494,5 @@ var isValid = function(s) {
     }
     return stack.length ? false : true
 };
+
 
