@@ -4858,6 +4858,27 @@ nroot
 
 console.log(myFunction(nroot))
 
+
+// Find max depth of BST
+
+var maxDepth = function(root) {
+    let depth = 0
+    if (!root) return 0
+    let stack = [{node:root, depth:1}]
+    while(stack.length){
+        let current = stack.pop()
+        depth = Math.max(depth,current.depth)
+        if(current.node.left){
+            stack.push({node:current.node.left, depth: current.depth +1 })   
+        }
+        if(current.node.right){
+            stack.push({node:current.node.right, depth: current.depth +1 })   
+        }        
+    }
+    return depth
+};
+
+
 // Substring length
 
 var lengthOfLongestSubstring = function(s) {
