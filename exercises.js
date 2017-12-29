@@ -6516,3 +6516,15 @@ var isValid = function(s) {
     return stack.length ? false : true
 };
 
+
+// Leet code 561 Array Partition I
+
+var arrayPairSum = function(nums) {
+    let sum = 0,i;
+    nums.sort((a,b)=>a-b)
+    for(i=0;i<nums.length;i += 2){
+        sum += nums[i]        
+    }
+    return sum
+};
+
