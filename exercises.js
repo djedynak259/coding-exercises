@@ -6546,3 +6546,7 @@ var getRow = function(rowIndex) {
     return row
 };
 
+// Leetcdde 557 reverse Words String
+
+var reverseWords = s => s.split(' ').map(e=>e.split('').reverse().join('')).join(' ')
+
