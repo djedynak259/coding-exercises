@@ -6528,3 +6528,21 @@ var arrayPairSum = function(nums) {
     return sum
 };
 
+// Leetcode 119 Pascal's triangle kth
+
+var getRow = function(rowIndex) {
+    let depth = 0;
+    let row = [1];
+    let nextRow = [1];
+    while(rowIndex > depth){
+        for(let i=1;i<row.length;i++){    
+            nextRow.push(row[i-1] + row[i]);
+        }
+        nextRow.push(1);
+        row = nextRow;
+        nextRow = [1];
+        depth++;
+    }
+    return row
+};
+
